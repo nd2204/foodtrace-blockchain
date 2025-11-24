@@ -1,0 +1,68 @@
+{
+  "APP": {
+    "TITLE": "Truy xuất nguồn gốc nông sản từ nông trại đến bàn ăn."
+  },
+
+  "LANG": {
+    "VI": "Tiếng Việt",
+    "EN": "Tiếng Anh"
+  },
+
+  "SIDEBAR": {
+    "DASHBOARD": "Bảng điều khiển",
+    "IDENTITY": "Định danh",
+    "SERVICES": "Dịch vụ",
+    "CONFIG": "Cấu hình",
+    "POLICIES": "Chính sách",
+    "AUTH": "Xác thực",
+    "SESSIONS": "Phiên"
+  },
+
+  "HEADER": {
+    "TITLE": "Bảng điều khiển nông trại",
+    "SUBTITLE": "Theo dõi thời gian thực tình trạng nông trại và chuỗi cung ứng."
+  },
+
+  "DASHBOARD": {
+    "TITLE": "Bảng điều khiển",
+    "WELCOME": "Tổng quan chuỗi cung ứng nông sản.",
+    "MAP_TITLE": "Bản đồ nông trại Việt Nam",
+    "MAP_CAPTION": "Mỗi điểm trên bản đồ là một nông trại đang tham gia hệ thống.",
+    "RECENT_ACTIVITY": "Thống kê lô hàng",
+
+    "STATS": {
+      "FARMS": "Nông trại đã đăng ký",
+      "PRODUCTS": "Loại sản phẩm",
+      "BATCHES": "Lô hàng trong hệ thống"
+    }
+  },
+
+  "NAV": {
+    "FARMS": "Nông trại",
+    "TRANSPORT": "Vận chuyển",
+    "DISTRIBUTION": "Phân phối"
+  },
+
+  "MAP": {
+    "ACTIVE": "Đang hoạt động",
+    "WARNING": "Cảnh báo",
+    "INACTIVE": "Tạm dừng"
+  },
+
+  "FARMER": {
+    "ACTIONS_TITLE": "Thao tác cho nông trại",
+    "ACTIONS": {
+      "VIEW_FARMS": "Xem nông trại của tôi",
+      "ADD_FARM": "Thêm nông trại mới",
+      "MANAGE_BATCHES": "Quản lý lô hàng",
+      "TRACE": "Truy xuất sản phẩm"
+    }
+  },
+
+  "TABLE": {
+    "BATCH_STATUS": "Trạng thái / Giai đoạn",
+    "BATCH_COUNT": "Số lượng lô",
+    "NO_BATCH": "Chưa có dữ liệu thống kê lô hàng.",
+    "VIEW_ALL": "Xem tất cả"
+  }
+}

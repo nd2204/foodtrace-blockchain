@@ -1,0 +1,78 @@
+<div class="auth-page">
+  <div class="auth-container">
+    <div class="auth-card">
+      
+      <div class="auth-left">
+        <div class="brand-header">
+          <div class="brand-logo-lg">FT</div>
+          <span class="brand-text-lg">FoodTrace</span>
+        </div>
+
+        <div class="hero-content">
+          <h2>{{ 'DASHBOARD.TITLE' | translate }}</h2>
+          <p>{{ 'DASHBOARD.WELCOME' | translate }}</p>
+          
+          <div class="hero-pills">
+            <span class="pill">🌾 {{ 'NAV.FARMS' | translate }}</span>
+            <span class="pill">🚛 {{ 'NAV.TRANSPORT' | translate }}</span>
+            <span class="pill">🏬 {{ 'NAV.DISTRIBUTION' | translate }}</span>
+          </div>
+        </div>
+
+        <div class="hero-footer">
+          <span>© 2025 FoodTrace Platform</span>
+        </div>
+      </div>
+
+      <div class="auth-right">
+        
+        <div class="auth-header-row">
+          <div class="lang-select-wrapper">
+            <select 
+              [ngModel]="currentLang" 
+              (ngModelChange)="setLang($event)" 
+              class="lang-dropdown"
+            >
+              <option value="vi">Tiếng Việt</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="auth-body">
+          <div class="auth-title">
+            <h1>{{ 'AUTH.LOGIN.TITLE' | translate }}</h1>
+            <p class="subtitle">{{ 'AUTH.LOGIN.SUBTITLE' | translate }}</p>
+          </div>
+
+          <form class="auth-form" (ngSubmit)="login()">
+            <div class="input-group">
+              <label>{{ 'AUTH.LOGIN.EMAIL' | translate }}</label>
+              <input type="email" name="email" [(ngModel)]="email" required placeholder="name@company.com" />
+            </div>
+
+            <div class="input-group">
+              <label>{{ 'AUTH.LOGIN.PASSWORD' | translate }}</label>
+              <input type="password" name="password" [(ngModel)]="password" required placeholder="••••••••" />
+            </div>
+
+            <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+            <button type="submit" class="btn-primary" [disabled]="isSubmitting">
+              {{ isSubmitting ? ('COMMON.LOADING' | translate) : ('AUTH.LOGIN.BUTTON' | translate) }}
+            </button>
+
+            <div class="auth-links">
+              <a routerLink="/forgot-password" class="link-forgot">
+                {{ 'AUTH.LOGIN.FORGOT' | translate }}
+              </a>
+              <a routerLink="/register" class="link-register">
+                {{ 'AUTH.LOGIN.REGISTER' | translate }}
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

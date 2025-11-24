@@ -1,0 +1,30 @@
+<div class="page-header" style="margin-bottom: 24px;">
+  <h1 style="font-size: 24px; font-weight: bold; margin: 0;">FoodTrace Dashboard</h1>
+  <p style="color: #6b7280; margin: 4px 0 0 0;">Smart agriculture traceability from farm to table.</p>
+</div>
+
+<section class="summary-row">
+    <div class="summary-card">
+      <div class="summary-label">{{ 'SUMMARY.FARMS' | translate }}</div>
+      <div class="summary-value">{{ summary?.farms || 0 }}</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">{{ 'SUMMARY.BATCHES' | translate }}</div>
+      <div class="summary-value">{{ summary?.batches || 0 }}</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">{{ 'SUMMARY.ACTIVE_POLICIES' | translate }}</div>
+      <div class="summary-value">{{ summary?.policies || 0 }}</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-label">{{ 'SUMMARY.SESSIONS' | translate }}</div>
+      <div class="summary-value">{{ summary?.sessions || 0 }}</div>
+    </div>
+</section>
+
+<section class="map-card">
+    <div class="card-header">
+      <h2>{{ 'MAP.VIETNAM' | translate }}</h2>
+    </div>
+    <div id="dashboard-map" class="map-container"></div>
+</section>

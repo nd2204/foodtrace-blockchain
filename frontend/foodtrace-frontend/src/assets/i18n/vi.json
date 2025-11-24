@@ -1,0 +1,116 @@
+{
+  "APP": {
+    "TITLE": "Truy xuất nguồn gốc nông sản từ nông trại đến bàn ăn."
+  },
+  "NAV": {
+    "DASHBOARD": "Bảng điều khiển",
+    "FARMS": "Nông trại",
+    "BATCHES": "Lô hàng",
+    "TRACE": "Truy xuất",
+    "ACTIVITIES": "Hoạt động",
+    "TRANSPORT": "Vận chuyển",
+    "DISTRIBUTION": "Phân phối"
+  },
+  "SIDEBAR": {
+    "ACCOUNT": "Tài khoản",
+    "LOGOUT": "Đăng xuất"
+  },
+  "PAGES": {
+    "FARMS": {
+      "TITLE": "Danh sách Nông trại",
+      "BTN_ADD": "Thêm nông trại",
+      "TH_ID": "ID",
+      "TH_NAME": "Tên nông trại",
+      "TH_PROVINCE": "Tỉnh/Thành",
+      "TH_OWNER": "Chủ sở hữu",
+      "TH_STATUS": "Trạng thái"
+    },
+    "BATCHES": {
+      "TITLE": "Quản lý Lô hàng",
+      "SUBTITLE": "Quản lý các lô hàng là trung tâm của hệ thống.",
+      "BTN_IMPORT": "Nhập từ Excel",
+      "BTN_CREATE": "Tạo lô hàng",
+      "TH_ID": "ID",
+      "TH_CODE": "Mã lô",
+      "TH_PRODUCT": "Sản phẩm",
+      "TH_FARM": "Nông trại",
+      "TH_STATUS": "Trạng thái",
+      "TH_CREATED": "Ngày tạo",
+      "BTN_VIEW": "Xem",
+      "BTN_TRACE": "Truy vết"
+    },
+    "BATCH_DETAIL": {
+      "TITLE": "Chi tiết lô hàng",
+      "SUBTITLE": "Thông tin chi tiết & timeline của lô hàng",
+      "INFO": "Thông tin lô hàng",
+      "TIMELINE": "Dòng thời gian",
+      "LBL_CODE": "Mã batch",
+      "LBL_PRODUCT": "Sản phẩm",
+      "LBL_FARM": "Nông trại",
+      "LBL_FACILITY": "Cơ sở xử lý",
+      "LBL_QTY": "Số lượng",
+      "LBL_STATUS": "Trạng thái",
+      "LBL_HARVEST": "Ngày thu hoạch",
+      "LBL_PRODUCE": "Ngày xử lý"
+    },
+    "TRACE": {
+      "TITLE": "Truy xuất nguồn gốc",
+      "SUBTITLE": "Nhập mã lô hàng hoặc quét QR để xem hành trình sản phẩm.",
+      "PLACEHOLDER": "VD: LOT-2025-001 hoặc mã QR",
+      "BTN_SEARCH": "Tra cứu"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Nhật ký Hoạt động",
+      "TH_TIME": "Thời gian",
+      "TH_EVENT": "Sự kiện",
+      "TH_FARM": "Đơn vị",
+      "TH_STATUS": "Trạng thái"
+    }
+  },
+  "SUMMARY": {
+    "FARMS": "Nông trại tham gia",
+    "BATCHES": "Lô hàng active",
+    "ACTIVE_POLICIES": "Chính sách hiệu lực",
+    "SESSIONS": "Phiên làm việc"
+  },
+  "MAP": {
+    "VIETNAM": "Bản đồ Nông trại Việt Nam"
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Đăng nhập hệ thống",
+      "SUBTITLE": "Truy cập nền tảng quản lý chuỗi cung ứng.",
+      "EMAIL": "Email đăng nhập",
+      "PASSWORD": "Mật khẩu",
+      "BUTTON": "Đăng nhập",
+      "FORGOT": "Quên mật khẩu?",
+      "REGISTER": "Tạo tài khoản"
+    },
+    "REGISTER": {
+      "TITLE": "Đăng ký tài khoản",
+      "SUBTITLE": "Tham gia mạng lưới nông sản sạch.",
+      "FULLNAME": "Họ và tên",
+      "EMAIL": "Email",
+      "PASSWORD": "Mật khẩu",
+      "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
+      "ROLE": "Vai trò",
+      "ROLE_FARMER": "Nông trại",
+      "ROLE_TRANSPORT": "Vận chuyển",
+      "ROLE_DISTRIBUTION": "Phân phối",
+      "BUTTON": "Đăng ký",
+      "ALREADY": "Đã có tài khoản?",
+      "BACK_TO_LOGIN": "Quay lại đăng nhập"
+    },
+    "FORGOT": {
+      "TITLE": "Quên mật khẩu",
+      "SUBTITLE": "Nhập email để nhận liên kết đặt lại mật khẩu.",
+      "EMAIL": "Email đăng ký",
+      "BUTTON": "Gửi liên kết",
+      "SUCCESS": "Liên kết đặt lại mật khẩu đã được gửi (nếu email tồn tại).",
+      "BACK": "Quay lại đăng nhập"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Đang xử lý..."
+  }
+}

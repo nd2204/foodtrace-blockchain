@@ -1,0 +1,62 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>{{ 'PAGES.BATCHES.TITLE' | translate }}</h1>
+      <p class="page-subtitle">{{ 'PAGES.BATCHES.SUBTITLE' | translate }}</p>
+    </div>
+
+    <div class="page-actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          placeholder="Tìm kiếm lô hàng..." 
+          [(ngModel)]="searchTerm"
+        >
+      </div>
+
+      <button class="btn-secondary">{{ 'PAGES.BATCHES.BTN_IMPORT' | translate }}</button>
+      <button class="btn-primary">{{ 'PAGES.BATCHES.BTN_CREATE' | translate }}</button>
+    </div>
+  </header>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{ 'PAGES.BATCHES.TH_ID' | translate }}</th>
+        <th>{{ 'PAGES.BATCHES.TH_CODE' | translate }}</th>
+        <th>{{ 'PAGES.BATCHES.TH_PRODUCT' | translate }}</th>
+        <th>{{ 'PAGES.BATCHES.TH_FARM' | translate }}</th>
+        <th>{{ 'PAGES.BATCHES.TH_STATUS' | translate }}</th>
+        <th>{{ 'PAGES.BATCHES.TH_CREATED' | translate }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of filteredBatches">
+        <td>{{ b.id }}</td>
+        <td>{{ b.code }}</td>
+        <td>{{ b.product }}</td>
+        <td>{{ b.farm }}</td>
+        <td>
+          <span class="badge" [ngClass]="'badge-status-' + (b.status | lowercase).replace(' ', '-')">
+            {{ b.status }}
+          </span>
+        </td>
+        <td>{{ b.createdAt }}</td>
+        <td class="table-actions">
+          <button class="link" [routerLink]="['/batches', b.id]">{{ 'PAGES.BATCHES.BTN_VIEW' | translate }}</button>
+          <button class="link" [routerLink]="['/trace']" [queryParams]="{ code: b.code }">
+            {{ 'PAGES.BATCHES.BTN_TRACE' | translate }}
+          </button>
+        </td>
+      </tr>
+      
+      <tr *ngIf="filteredBatches.length === 0">
+        <td colspan="7" style="text-align: center; padding: 20px; color: #64748b;">
+          Không tìm thấy kết quả nào cho "{{ searchTerm }}"
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

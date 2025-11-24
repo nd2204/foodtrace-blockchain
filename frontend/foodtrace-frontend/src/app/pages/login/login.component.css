@@ -1,0 +1,238 @@
+/* src/app/pages/login/login.component.css */
+
+/* CẤU TRÚC CHUNG */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f8fafc;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.auth-card {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  min-height: 600px; /* Chiều cao tối thiểu để cân đối */
+}
+
+/* --- LEFT SIDE --- */
+.auth-left {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  /* Căn trên cùng, dùng margin-auto để đẩy nội dung */
+  justify-content: flex-start; 
+  position: relative;
+}
+
+/* Logo Header */
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 80px; /* Khoảng cách với nội dung chính */
+}
+
+.brand-logo-lg {
+  width: 48px;
+  height: 48px;
+  background: #16a34a;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.brand-text-lg {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #14532d;
+  letter-spacing: -0.5px;
+}
+
+/* Nội dung chính (đẩy footer xuống đáy) */
+.hero-content {
+  margin-bottom: auto; 
+}
+
+.hero-content h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #14532d;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.hero-content p {
+  color: #166534;
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pill {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  color: #15803d;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  backdrop-filter: blur(4px);
+}
+
+/* Footer */
+.hero-footer {
+  font-size: 0.8rem;
+  color: #166534;
+  opacity: 0.7;
+}
+
+/* --- RIGHT SIDE --- */
+.auth-right {
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER: Căn phải cho dropdown */
+.auth-header-row {
+  display: flex;
+  justify-content: flex-end; 
+  margin-bottom: 40px; /* Tăng khoảng cách một chút cho thoáng */
+  width: 100%;
+}
+
+.lang-dropdown {
+  padding: 8px 32px 8px 12px;
+  font-size: 0.85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  color: #475569;
+  cursor: pointer;
+  appearance: none;
+  /* Icon mũi tên */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  min-width: 110px;
+}
+
+.lang-dropdown:focus {
+  outline: none;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+/* FORM */
+.auth-title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #16a34a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.btn-primary {
+  margin-top: 12px;
+  padding: 14px;
+  background: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #15803d;
+}
+
+.auth-links {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.link-forgot {
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.link-forgot:hover { color: #0f172a; text-decoration: underline; }
+
+.link-register {
+  color: #16a34a;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.link-register:hover { color: #15803d; text-decoration: underline; }
+
+.error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  padding: 8px;
+  background: #fef2f2;
+  border-radius: 6px;
+}

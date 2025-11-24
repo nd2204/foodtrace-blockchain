@@ -1,0 +1,106 @@
+/* src/pages/batches/batches-list.component.css */
+
+/* Thêm style cho page-header (dùng trong batches-list.component.html) */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.page-actions {
+  display: flex;
+  gap: 8px;
+}
+/* END page-header */
+
+
+/* Thêm style cho badge (dùng trong batches-list.component.html) */
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.badge-status-in-farm {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.badge-status-in-transit {
+  background: #fef3c7;
+  color: #d97706;
+}
+/* END badge */
+
+
+/* Style cũ */
+.page-shell {
+  max-width: 1024px;
+  margin: 24px auto;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+}
+
+.actions-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border: none;
+  background: #22c55e;
+  color: white;
+}
+
+.btn-secondary {
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #374151;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.table th {
+  font-weight: 600;
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+.table-actions button {
+  margin-right: 8px;
+}

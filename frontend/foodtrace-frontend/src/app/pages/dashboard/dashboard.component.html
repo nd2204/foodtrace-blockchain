@@ -1,0 +1,77 @@
+<div class="dashboard-page">
+  <div class="dashboard-shell" [class.collapsed]="isSidebarCollapsed">
+    
+    <aside class="sidebar-card">
+      <div class="brand-block" (click)="toggleSidebar()">
+        <div class="brand-logo">FT</div>
+        <div class="brand-text" *ngIf="!isSidebarCollapsed">
+          <div class="brand-title">FoodTrace</div>
+          <div class="brand-subtitle">
+            {{ 'APP.TITLE' | translate }}
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.DASHBOARD' | translate }}</span>
+        </a>
+        <a routerLink="/farms" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
+          <span class="nav-icon">🌾</span>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.FARMS' | translate }}</span>
+        </a>
+        <a routerLink="/batches" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
+          <span class="nav-icon">📦</span>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.BATCHES' | translate }}</span>
+        </a>
+        <a routerLink="/trace" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
+          <span class="nav-icon">🔍</span>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.TRACE' | translate }}</span>
+        </a>
+        <a routerLink="/activities" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.ACTIVITIES' | translate }}</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-block">
+          <div class="user-avatar">{{ currentUser.avatar }}</div>
+          
+          <div class="user-info" *ngIf="!isSidebarCollapsed">
+            <div class="user-name">{{ currentUser.name }}</div>
+            <div class="user-role">{{ currentUser.role }}</div>
+          </div>
+        </div>
+
+        <button class="btn-logout" (click)="logout()" title="{{ 'SIDEBAR.LOGOUT' | translate }}">
+          <span class="logout-icon">🚪</span>
+          <span class="logout-label" *ngIf="!isSidebarCollapsed">{{ 'SIDEBAR.LOGOUT' | translate }}</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <main class="main-content">
+      <header class="main-header">
+        <div>
+          </div>
+
+        <div class="lang-select">
+          <select 
+            [ngModel]="currentLang" 
+            (ngModelChange)="setLang($event)"
+            name="langSelect"
+          >
+            <option value="vi">VI</option>
+            <option value="en">EN</option>
+          </select>
+        </div>
+      </header>
+
+      <router-outlet></router-outlet>
+      
+    </main>
+  </div>
+</div>

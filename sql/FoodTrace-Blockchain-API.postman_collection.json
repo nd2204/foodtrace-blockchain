@@ -1,0 +1,260 @@
+{
+  "info": {
+    "name": "FoodTrace Blockchain API",
+    "_postman_id": "fdb8b9d1-1234-4567-8901-foodtrace",
+    "description": "Full API collection for FoodTrace Blockchain backend (with soft delete + license delete)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"email\": \"admin@test.com\",\n  \"password\": \"123456\",\n  \"role\": \"admin\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{base_url}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"123456\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/categories"
+          }
+        },
+        {
+          "name": "Create Category (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{admin_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/categories",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trái cây\",\n  \"description\": \"Nhóm sản phẩm trái cây tươi\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products (Role-based)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{manufacturer_token}}" }],
+            "url": "{{base_url}}/products"
+          }
+        },
+        {
+          "name": "Get All Products Public",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/products/public"
+          }
+        },
+        {
+          "name": "Create or Link Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{manufacturer_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cam Cao Phong\",\n  \"description\": \"Cam đặc sản vùng Cao Phong\",\n  \"category_id\": 1,\n  \"origin\": \"Hòa Bình\",\n  \"farm_id\": 1\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Farms",
+      "item": [
+        {
+          "name": "Get All Farms",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{manufacturer_token}}" }],
+            "url": "{{base_url}}/farms"
+          }
+        },
+        {
+          "name": "Create Farm",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{manufacturer_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/farms",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trang trại Hòa Bình Xanh\",\n  \"owner_name\": \"Nguyễn Văn A\",\n  \"address\": \"Cao Phong, Hòa Bình\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Farm (Soft Delete)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "{{admin_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/farms/1",
+            "description": "Xóa mềm (set is_active = false) nông trại có ID = 1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Farm Licenses",
+      "item": [
+        {
+          "name": "Get All Licenses",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/farm-licenses"
+          }
+        },
+        {
+          "name": "Create License",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{manufacturer_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/farm-licenses",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"farm_id\": 1,\n  \"license_number\": \"VG-2024-001\",\n  \"license_type\": \"VietGAP\",\n  \"issuer\": \"Sở NNPTNT Hòa Bình\",\n  \"issue_date\": \"2024-01-10\",\n  \"expiry_date\": \"2026-01-10\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete License",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "{{admin_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/farm-licenses/1",
+            "description": "Xóa giấy chứng nhận có ID = 1 (xóa vật lý + media + MeiliSearch)"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lab Tests",
+      "item": [
+        {
+          "name": "Get All Lab Tests",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/lab-tests"
+          }
+        },
+        {
+          "name": "Create Lab Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{manufacturer_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/lab-tests",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"batch_id\": 1,\n  \"test_type\": \"Pesticide Residue\",\n  \"result\": \"Không phát hiện\",\n  \"tested_by\": \"Trung tâm kiểm nghiệm Hòa Bình\",\n  \"test_date\": \"2025-11-09\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Batches",
+      "item": [
+        {
+          "name": "Get All Batches",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{manufacturer_token}}" }],
+            "url": "{{base_url}}/batches"
+          }
+        },
+        {
+          "name": "Create Batch",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{manufacturer_token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{base_url}}/batches",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product_id\": 1,\n  \"farm_id\": 1,\n  \"applied_license_id\": 1,\n  \"production_date\": \"2025-11-09\",\n  \"expiry_date\": \"2025-12-09\",\n  \"origin_type\": \"farm\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trace (QR & Blockchain)",
+      "item": [
+        {
+          "name": "Trace Summary",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/trace/{{test_batch}}"
+          }
+        },
+        {
+          "name": "Trace Details",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/trace/{{test_batch}}/details"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000/api" },
+    { "key": "admin_token", "value": "Bearer YOUR_ADMIN_TOKEN_HERE" },
+    { "key": "manufacturer_token", "value": "Bearer YOUR_MANUFACTURER_TOKEN_HERE" },
+    { "key": "test_batch", "value": "BATCH-1-1762325000" }
+  ]
+}

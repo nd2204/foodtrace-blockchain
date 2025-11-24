@@ -1,0 +1,24 @@
+<div class="page">
+  <header class="page-header">
+    <h1>{{ 'PAGES.ACTIVITIES.TITLE' | translate }}</h1>
+  </header>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{ 'PAGES.ACTIVITIES.TH_TIME' | translate }}</th>
+        <th>{{ 'PAGES.ACTIVITIES.TH_EVENT' | translate }}</th>
+        <th>{{ 'PAGES.ACTIVITIES.TH_FARM' | translate }}</th>
+        <th>{{ 'PAGES.ACTIVITIES.TH_STATUS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of activities">
+        <td>{{ a.time }}</td>
+        <td>{{ a.type }}</td>
+        <td>{{ a.farmName }}</td>
+        <td>{{ a.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

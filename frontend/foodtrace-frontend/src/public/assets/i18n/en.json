@@ -1,0 +1,68 @@
+{
+  "APP": {
+    "TITLE": "Smart agriculture traceability from farm to table."
+  },
+
+  "LANG": {
+    "VI": "Vietnamese",
+    "EN": "English"
+  },
+
+  "SIDEBAR": {
+    "DASHBOARD": "Dashboard",
+    "IDENTITY": "Identity Registry",
+    "SERVICES": "Services",
+    "CONFIG": "System Config",
+    "POLICIES": "Policy Management",
+    "AUTH": "Auth Control",
+    "SESSIONS": "Sessions"
+  },
+
+  "HEADER": {
+    "TITLE": "Farmer dashboard",
+    "SUBTITLE": "Real-time overview of your farms and supply chain."
+  },
+
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "WELCOME": "Live insights across your farm operations and supply chain.",
+    "MAP_TITLE": "Vietnam Farm Network",
+    "MAP_CAPTION": "Active farms and operational points across the country.",
+    "RECENT_ACTIVITY": "Batch statistics",
+
+    "STATS": {
+      "FARMS": "Registered farms",
+      "PRODUCTS": "Product types",
+      "BATCHES": "Batches in system"
+    }
+  },
+
+  "NAV": {
+    "FARMS": "Farms",
+    "TRANSPORT": "Transport",
+    "DISTRIBUTION": "Distribution"
+  },
+
+  "MAP": {
+    "ACTIVE": "Active",
+    "WARNING": "Warning",
+    "INACTIVE": "Inactive"
+  },
+
+  "FARMER": {
+    "ACTIONS_TITLE": "Farmer actions",
+    "ACTIONS": {
+      "VIEW_FARMS": "View my farms",
+      "ADD_FARM": "Add new farm",
+      "MANAGE_BATCHES": "Manage batches",
+      "TRACE": "Product traceability"
+    }
+  },
+
+  "TABLE": {
+    "BATCH_STATUS": "Status / Period",
+    "BATCH_COUNT": "Batch count",
+    "NO_BATCH": "No batch statistics available.",
+    "VIEW_ALL": "View all"
+  }
+}

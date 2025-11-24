@@ -1,0 +1,46 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>{{ 'PAGES.FARMS.TITLE' | translate }}</h1>
+    </div>
+    
+    <div class="page-actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Tìm nông trại..." [(ngModel)]="searchTerm">
+      </div>
+
+      <button class="btn-primary" routerLink="/farms/create">{{ 'PAGES.FARMS.BTN_ADD' | translate }}</button>
+    </div>
+  </header>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>{{ 'PAGES.FARMS.TH_ID' | translate }}</th>
+        <th>{{ 'PAGES.FARMS.TH_NAME' | translate }}</th>
+        <th>{{ 'PAGES.FARMS.TH_PROVINCE' | translate }}</th>
+        <th>{{ 'PAGES.FARMS.TH_OWNER' | translate }}</th>
+        <th>{{ 'PAGES.FARMS.TH_STATUS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let f of filteredFarms">
+        <td>{{ f.id }}</td>
+        <td>{{ f.name }}</td>
+        <td>{{ f.province }}</td>
+        <td>{{ f.owner }}</td>
+        <td>
+           <span class="badge" [ngClass]="'badge-status-' + f.status">
+            {{ f.status }}
+           </span>
+        </td>
+      </tr>
+      <tr *ngIf="filteredFarms.length === 0">
+        <td colspan="5" style="text-align: center; padding: 20px; color: #64748b;">
+          Không tìm thấy nông trại nào.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

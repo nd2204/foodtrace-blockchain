@@ -1,0 +1,101 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>{{ 'PAGES.TRACE.TITLE' | translate }}</h1>
+      <p class="page-subtitle">
+        {{ 'PAGES.TRACE.SUBTITLE' | translate }}
+      </p>
+    </div>
+  </header>
+
+  <form class="trace-form" (ngSubmit)="trace()">
+    <input
+      type="text"
+      [(ngModel)]="code"
+      name="code"
+      [placeholder]="'PAGES.TRACE.PLACEHOLDER' | translate"
+      required
+    />
+    <button type="submit" class="btn-primary" [disabled]="isLoading">
+      {{ isLoading ? ('COMMON.LOADING' | translate) : ('PAGES.TRACE.BTN_SEARCH' | translate) }}
+    </button>
+  </form>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="trace-result" *ngIf="result">
+    
+    <div class="blockchain-status" 
+         [class.verified]="result.blockchain?.verified"
+         [class.unverified]="!result.blockchain?.verified">
+      
+      <div class="bc-icon">
+        {{ result.blockchain?.verified ? '✅' : '⚠️' }}
+      </div>
+
+      <div class="bc-info">
+        <strong>
+          {{ result.blockchain?.verified ? 'Dữ liệu đã được xác thực trên Blockchain' : 'Dữ liệu chưa được xác thực trên Blockchain' }}
+        </strong>
+        <div class="tx-hash" *ngIf="result.blockchain?.verified">
+          TxHash: {{ result.blockchain?.blockchain_tx }}
+        </div>
+        <div class="tx-hash" *ngIf="!result.blockchain?.verified">
+          Cảnh báo: Dữ liệu này có thể chưa được đồng bộ hoặc đã bị thay đổi.
+        </div>
+      </div>
+    </div>
+
+    <div class="trace-header">
+      <div>
+        <h3 class="product-name">{{ result.product?.name || 'Sản phẩm chưa đặt tên' }}</h3>
+        <p class="product-desc">{{ result.product?.description }}</p>
+        
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="label">Mã lô hàng:</span>
+            <span class="value highlight">{{ result.batch?.batch_number }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Nông trại:</span>
+            <span class="value">{{ result.farm?.farm_name || 'N/A' }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Ngày sản xuất:</span>
+            <span class="value">{{ result.batch?.production_date | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <h4>Hành trình sản phẩm</h4>
+      <div class="timeline">
+        <div
+          class="timeline-item"
+          *ngFor="let e of timelineEvents; let i = index"
+          [ngClass]="['timeline-' + e.status, e.isBlockchain ? 'timeline-blockchain' : '']"
+        >
+          <div class="timeline-dot"></div>
+          <div class="timeline-line" *ngIf="i < timelineEvents.length - 1"></div>
+
+          <div class="timeline-content">
+            <div class="timeline-title">
+              {{ e.label }}
+              <span class="badge" [class.badge-bc]="e.isBlockchain">
+                {{ e.isBlockchain ? 'Blockchain' : 'Hoàn thành' }}
+              </span>
+            </div>
+            <p class="timeline-meta">
+              <span>⏱ {{ e.time }}</span>
+              <span>📍 {{ e.location }}</span>
+            </p>
+            <p class="timeline-actor">👤 {{ e.actor }}</p>
+            <p class="timeline-note" *ngIf="e.note">{{ e.note }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

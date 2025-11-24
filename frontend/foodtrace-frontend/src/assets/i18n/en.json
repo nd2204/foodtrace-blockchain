@@ -1,0 +1,120 @@
+{
+  "APP": {
+    "TITLE": "Smart agriculture traceability from farm to table."
+  },
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "FARMS": "Farms",
+    "BATCHES": "Batches",
+    "TRACE": "Traceability",
+    "ACTIVITIES": "Activities",
+    "TRANSPORT": "Transport",
+    "DISTRIBUTION": "Distribution"
+  },
+  "SIDEBAR": {
+    "ACCOUNT": "Account",
+    "LOGOUT": "Logout"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "WELCOME": "Live insights across your supply chain."
+  },
+  "SUMMARY": {
+    "FARMS": "Active Farms",
+    "BATCHES": "Active Batches",
+    "ACTIVE_POLICIES": "Active Policies",
+    "SESSIONS": "Sessions"
+  },
+  "MAP": {
+    "VIETNAM": "Vietnam Farm Network"
+  },
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Sign In",
+      "SUBTITLE": "Access the supply chain platform.",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "BUTTON": "Login",
+      "FORGOT": "Forgot password?",
+      "REGISTER": "Create account"
+    },
+    "REGISTER": {
+      "TITLE": "Create Account",
+      "SUBTITLE": "Join the clean agriculture network.",
+      "FULLNAME": "Full Name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "ROLE": "Role",
+      "ROLE_FARMER": "Farmer",
+      "ROLE_TRANSPORT": "Transporter",
+      "ROLE_DISTRIBUTION": "Distributor",
+      "BUTTON": "Register",
+      "ALREADY": "Already have an account?",
+      "BACK_TO_LOGIN": "Back to login"
+    },
+    "FORGOT": {
+      "TITLE": "Forgot Password",
+      "SUBTITLE": "Enter your email to receive a reset link.",
+      "EMAIL": "Registered Email",
+      "BUTTON": "Send Link",
+      "SUCCESS": "Reset link sent (if email exists).",
+      "BACK": "Back to login"
+    }
+  },
+  "PAGES": {
+    "FARMS": {
+      "TITLE": "Farms List",
+      "BTN_ADD": "Add new farm",
+      "TH_ID": "ID",
+      "TH_NAME": "Farm Name",
+      "TH_PROVINCE": "Province",
+      "TH_OWNER": "Owner",
+      "TH_STATUS": "Status"
+    },
+    "BATCHES": {
+      "TITLE": "Batches Management",
+      "SUBTITLE": "Manage batches as the core of the system.",
+      "BTN_IMPORT": "Import Excel",
+      "BTN_CREATE": "Create batch",
+      "TH_ID": "ID",
+      "TH_CODE": "Code",
+      "TH_PRODUCT": "Product",
+      "TH_FARM": "Farm",
+      "TH_STATUS": "Status",
+      "TH_CREATED": "Created At",
+      "BTN_VIEW": "View",
+      "BTN_TRACE": "Trace"
+    },
+    "BATCH_DETAIL": {
+      "TITLE": "Batch Details",
+      "SUBTITLE": "Detailed info & timeline for batch",
+      "INFO": "Batch Information",
+      "TIMELINE": "Timeline",
+      "LBL_CODE": "Batch Code",
+      "LBL_PRODUCT": "Product",
+      "LBL_FARM": "Farm",
+      "LBL_FACILITY": "Facility",
+      "LBL_QTY": "Quantity",
+      "LBL_STATUS": "Status",
+      "LBL_HARVEST": "Harvested At",
+      "LBL_PRODUCE": "Produced At"
+    },
+    "TRACE": {
+      "TITLE": "Product Traceability",
+      "SUBTITLE": "Enter batch code or QR to view product journey.",
+      "PLACEHOLDER": "Ex: LOT-2025-001 or QR code",
+      "BTN_SEARCH": "Trace"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Activity Log",
+      "TH_TIME": "Time",
+      "TH_EVENT": "Event",
+      "TH_FARM": "Entity",
+      "TH_STATUS": "Status"
+    }
+  },
+  "COMMON": {
+    "LOADING": "Loading..."
+  }
+}
