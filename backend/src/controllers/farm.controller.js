@@ -5,7 +5,7 @@
  */
 
 const crypto = require("crypto");
-const { getPool } = require("../config/db.config");
+const getPool = require("../config/db.config");
 const { contract } = require("../config/blockchain");
 const SearchService = require("../services/search.service"); // ✅ MiniSearch
 

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FarmService } from '../../services/farm.service';
 
 @Component({
   selector: 'app-farms-list',
@@ -13,6 +14,15 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 })
 export class FarmsListComponent {
   searchTerm: string = '';
+
+  constructor(
+    private farmService: FarmService
+  ) {
+    farmService.search(this.searchTerm).subscribe({
+      next: (value) => { console.log(value) },
+      error: (err) => { console.log(err) }
+    });
+  }
 
   allFarms = [
     { id: 1, name: 'Farm A', province: 'Đà Lạt', owner: 'Nguyễn Văn A', status: 'active' },

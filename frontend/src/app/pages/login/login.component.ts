@@ -42,16 +42,18 @@ export class LoginComponent {
     this.errorMessage = '';
     this.isSubmitting = true;
 
-    this.authService.login({ username: this.email, password: this.password }).subscribe({
-      next: (res) => {
-        this.isSubmitting = false;
+    // Call backend api
+    const result = this.authService.login({ username: this.email, password: this.password })
+    result.subscribe( {
+      next: (value) => {
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {
+        this.errorMessage = err.error?.error || 'Đăng nhập thất bại.';
         this.isSubmitting = false;
         const errorMsg = err.error?.error || '';
 
-        // 🛑 BẮT LỖI CHƯA KÍCH HOẠT
+        // BẮT LỖI CHƯA KÍCH HOẠT
         if (errorMsg === 'Email not verified') {
           if (confirm('Tài khoản này chưa được kích hoạt. Bạn có muốn nhập mã xác thực ngay không?')) {
             this.router.navigate(['/verify'], { queryParams: { email: this.email } });
@@ -59,7 +61,8 @@ export class LoginComponent {
         } else {
           this.errorMessage = errorMsg || 'Tên đăng nhập hoặc mật khẩu không đúng.';
         }
-      }
+      },
+      complete: () => { this.isSubmitting = false; }
     });
   }
 }

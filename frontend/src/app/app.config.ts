@@ -1,11 +1,12 @@
 import { ApplicationConfig, importProvidersFrom, APP_INITIALIZER } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 // Factory để load file JSON
 export function HttpLoaderFactory(http: HttpClient) {
@@ -25,6 +26,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(), // Quan trọng cho các hiệu ứng chuyển động
+    provideHttpClient(withInterceptors([authInterceptor])),
     importProvidersFrom(
       HttpClientModule,
       TranslateModule.forRoot({
@@ -42,6 +44,6 @@ export const appConfig: ApplicationConfig = {
       useFactory: appInitializerFactory,
       deps: [TranslateService],
       multi: true
-    }
+    },
   ],
 };

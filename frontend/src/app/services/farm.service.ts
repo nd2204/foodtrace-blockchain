@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { ApiService, ENDPOINTS } from './api.service';
 
 @Injectable({ providedIn: 'root' })
 export class FarmService {
-  private apiUrl = `${environment.apiUrl}/api/farms`;
-
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) {}
 
   // Hàm tạo nông trại có upload file
-  createFarm(data: any, files: File[]): Observable<any> {
+  create(data: any, files: File[]): Observable<any> {
     const formData = new FormData();
 
     // Append các trường text
@@ -27,11 +25,11 @@ export class FarmService {
       });
     }
 
-    return this.http.post(`${this.apiUrl}/create`, formData);
+    return this.apiService.post(`${ENDPOINTS.FARM.BASE}`, formData);
   }
 
   // Hàm lấy danh sách (Search)
-  searchFarms(query: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/search`, query);
+  search(query: any): Observable<any> {
+    return this.apiService.post(`${ENDPOINTS.FARM.SEARCH}`, query);
   }
 }

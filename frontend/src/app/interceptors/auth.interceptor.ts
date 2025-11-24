@@ -1,26 +1,34 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
-@Injectable()
-export class AuthInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('auth_token');
+import { HttpInterceptorFn } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
-    if (token) {
-      const authReq = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      return next.handle(authReq);
-    }
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const token = inject(AuthService);
 
-    return next.handle(req);
-  }
-}
+  const authReq = req.clone({
+    headers: req.headers.set('Authorization', `Bearer ${token.getToken()}`)
+  });
+
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) => {
+      console.error('HTTP Error for:', req.url);
+      console.error('Error Status:', error.status);
+      console.error('Error Body:', error.error);
+
+      // Add your global error handling logic here (e.g., show a notification)
+      // Example: this is where you might inject a NotificationService
+
+      // Re-throw the error so downstream components/services can still handle it if needed
+      return throwError(() => error);
+    })
+   );
+};
