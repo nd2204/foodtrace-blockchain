@@ -1,4 +1,4 @@
-# Cách chạy backend
+# Cách chạy dự án
 Yêu cầu:
 docker, docker-compose
 nodejs
@@ -19,6 +19,8 @@ npm run deploy # build và deploy contract
 cd backend
 npm install
 docker compose up -d
+# đảm bảo database đã hoạt động để migrate code (bootstrap)
+npm run migration:up
 npm run dev
 ```
 
