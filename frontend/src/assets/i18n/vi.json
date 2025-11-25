@@ -1,142 +1,75 @@
 {
-  "APP": {
-    "TITLE": "Truy xuất nguồn gốc nông sản từ nông trại đến bàn ăn."
-  },
+  "APP": { "TITLE": "Truy xuất nguồn gốc nông sản từ nông trại đến bàn ăn." },
   "NAV": {
     "DASHBOARD": "Bảng điều khiển",
     "FARMS": "Nông trại",
     "BATCHES": "Lô hàng",
+    "PRODUCTS": "Sản phẩm",
+    "CATEGORIES": "Danh mục",
     "TRACE": "Truy xuất",
     "ACTIVITIES": "Hoạt động",
     "TRANSPORT": "Vận chuyển",
     "DISTRIBUTION": "Phân phối"
   },
-  "SIDEBAR": {
-    "ACCOUNT": "Tài khoản",
-    "LOGOUT": "Đăng xuất"
-  },
-  "DASHBOARD": {
-    "TITLE": "Bảng điều khiển",
-    "WELCOME": "Tổng quan chuỗi cung ứng nông sản."
-  },
+  "SIDEBAR": { "ACCOUNT": "Tài khoản", "LOGOUT": "Đăng xuất" },
+  "DASHBOARD": { "TITLE": "Bảng điều khiển", "WELCOME": "Tổng quan chuỗi cung ứng nông sản." },
   "SUMMARY": {
-    "FARMS": "Nông trại tham gia",
-    "BATCHES": "Lô hàng active",
-    "ACTIVE_POLICIES": "Chính sách hiệu lực",
+    "FARMS": "Nông trại",
+    "BATCHES": "Lô hàng",
+    "PRODUCTS": "Sản phẩm",
+    "ACTIVE_POLICIES": "Chính sách",
     "SESSIONS": "Phiên làm việc"
   },
-  "MAP": {
-    "VIETNAM": "Bản đồ Nông trại Việt Nam"
+  "COMMON": {
+    "Search": "Tìm kiếm...", "LOADING": "Đang xử lý...", "BACK": "Trở lại", "ACTIONS": "Thao tác", "VIEW": "Xem", "DELETE": "Xóa", "EDIT": "Sửa", "TRACE": "Truy vết", "FILTER": "Bộ lọc", "APPLY": "Áp dụng", "RESET": "Làm mới", "SAVE": "Lưu lại", "CREATE": "Tạo mới", "CANCEL": "Hủy bỏ"
   },
+  "MAP": { "VIETNAM": "Bản đồ Nông trại Việt Nam" },
   "AUTH": {
     "LOGIN": {
-      "TITLE": "Đăng nhập hệ thống",
-      "SUBTITLE": "Truy cập nền tảng quản lý chuỗi cung ứng.",
-      "EMAIL": "Email đăng nhập",
-      "PASSWORD": "Mật khẩu",
-      "BUTTON": "Đăng nhập",
-      "FORGOT": "Quên mật khẩu?",
-      "REGISTER": "Tạo tài khoản"
+      "TITLE": "Đăng nhập hệ thống", "SUBTITLE": "Truy cập nền tảng quản lý chuỗi cung ứng.", "EMAIL": "Email đăng nhập", "PASSWORD": "Mật khẩu", "BUTTON": "Đăng nhập", "FORGOT": "Quên mật khẩu?", "REGISTER": "Tạo tài khoản"
     },
     "REGISTER": {
-      "TITLE": "Đăng ký tài khoản",
-      "SUBTITLE": "Tham gia mạng lưới nông sản sạch.",
-      "FULLNAME": "Họ và tên",
-      "EMAIL": "Email",
-      "PASSWORD": "Mật khẩu",
-      "CONFIRM_PASSWORD": "Xác nhận mật khẩu",
-      "ROLE": "Vai trò",
-      "ROLE_FARMER": "Nông trại",
-      "ROLE_TRANSPORT": "Vận chuyển",
-      "ROLE_DISTRIBUTION": "Phân phối",
-      "BUTTON": "Đăng ký",
-      "ALREADY": "Đã có tài khoản?",
-      "BACK_TO_LOGIN": "Quay lại đăng nhập"
+      "TITLE": "Đăng ký tài khoản", "SUBTITLE": "Tham gia mạng lưới nông sản sạch.", "FULLNAME": "Họ và tên", "EMAIL": "Email", "PASSWORD": "Mật khẩu", "CONFIRM_PASSWORD": "Xác nhận mật khẩu", "ROLE": "Vai trò", "ROLE_FARMER": "Nông trại", "ROLE_TRANSPORT": "Vận chuyển", "ROLE_DISTRIBUTION": "Phân phối", "BUTTON": "Đăng ký", "ALREADY": "Đã có tài khoản?", "BACK_TO_LOGIN": "Quay lại đăng nhập"
     },
     "FORGOT": {
-      "TITLE": "Quên mật khẩu",
-      "SUBTITLE": "Nhập email để nhận mã xác thực đặt lại mật khẩu.",
-      "EMAIL": "Email đăng ký",
-      "BUTTON_SEND": "Gửi mã xác thực",
-      "STEP2_TITLE": "Đặt lại mật khẩu",
-      "STEP2_SUBTITLE": "Nhập mã OTP từ email và mật khẩu mới.",
-      "LABEL_CODE": "Mã OTP (6 số)",
-      "LABEL_NEW_PASS": "Mật khẩu mới",
-      "LABEL_CONFIRM_PASS": "Xác nhận mật khẩu mới",
-      "BUTTON_RESET": "Đổi mật khẩu",
-      "SUCCESS": "Đổi mật khẩu thành công! Đang chuyển về đăng nhập...",
-      "BACK": "Quay lại đăng nhập"
+      "TITLE": "Quên mật khẩu", "SUBTITLE": "Nhập email để nhận mã xác thực đặt lại mật khẩu.", "TITLE_RESET": "Đặt lại mật khẩu", "SUBTITLE_RESET": "Nhập mã OTP và mật khẩu mới.", "EMAIL": "Email đăng ký", "CODE": "Mã OTP (6 số)", "NEW_PASSWORD": "Mật khẩu mới", "CONFIRM_PASSWORD": "Xác nhận mật khẩu", "BUTTON_SEND": "Gửi mã xác thực", "BUTTON_RESET": "Đổi mật khẩu", "BACK": "Quay lại đăng nhập", "SUCCESS_SEND": "Mã xác thực đã được gửi đến email của bạn.", "SUCCESS_RESET": "Đổi mật khẩu thành công! Vui lòng đăng nhập lại."
     },
     "VERIFY": {
-      "TITLE": "Xác thực tài khoản",
-      "SUBTITLE": "Vui lòng nhập mã xác thực (OTP) đã được gửi đến email của bạn.",
-      "LABEL_EMAIL": "Email nhận mã",
-      "LABEL_CODE": "Mã OTP (6 số)",
-      "PLACEHOLDER_CODE": "Ví dụ: 123456",
-      "BUTTON": "Xác thực ngay",
-      "SUCCESS": "Xác thực thành công!",
-      "REDIRECT": "Đang chuyển hướng vào hệ thống...",
-      "BACK": "Quay lại đăng nhập"
+      "TITLE": "Xác thực tài khoản", "SUBTITLE": "Vui lòng nhập mã xác thực (OTP) đã được gửi đến email của bạn.", "LABEL_EMAIL": "Email nhận mã", "LABEL_CODE": "Mã OTP (6 số)", "PLACEHOLDER_CODE": "Ví dụ: 123456", "BUTTON": "Xác thực ngay", "SUCCESS": "Xác thực thành công!", "REDIRECT": "Đang chuyển hướng vào hệ thống...", "BACK": "Quay lại đăng nhập"
     }
   },
   "PAGES": {
     "FARMS": {
-      "TITLE": "Danh sách Nông trại",
-      "BTN_ADD": "Thêm nông trại",
-      "TH_ID": "ID",
-      "TH_NAME": "Tên nông trại",
-      "TH_PROVINCE": "Tỉnh/Thành",
-      "TH_OWNER": "Chủ sở hữu",
-      "TH_STATUS": "Trạng thái"
+      "TITLE": "Danh sách Nông trại", "TITLE_CREATE": "Thêm nông trại mới", "TITLE_EDIT": "Cập nhật nông trại", "BTN_ADD": "Thêm nông trại",
+      "TH_ID": "ID", "TH_NAME": "Tên nông trại", "TH_PROVINCE": "Tỉnh/Thành", "TH_OWNER": "Chủ sở hữu", "TH_STATUS": "Trạng thái",
+      "LBL_NAME": "Tên nông trại", "LBL_OWNER": "Chủ sở hữu", "LBL_ADDRESS": "Địa chỉ", "LBL_EMAIL": "Email", "LBL_PHONE": "Số điện thoại", "LBL_WEBSITE": "Website"
     },
     "BATCHES": {
-      "TITLE": "Quản lý Lô hàng",
-      "SUBTITLE": "Quản lý các lô hàng là trung tâm của hệ thống.",
-      "BTN_IMPORT": "Nhập từ Excel",
-      "BTN_CREATE": "Tạo lô hàng",
-      "TH_ID": "ID",
-      "TH_CODE": "Mã lô",
-      "TH_PRODUCT": "Sản phẩm",
-      "TH_FARM": "Nông trại",
-      "TH_STATUS": "Trạng thái",
-      "TH_CREATED": "Ngày tạo",
-      "BTN_VIEW": "Xem",
-      "BTN_TRACE": "Truy vết"
+      "TITLE": "Quản lý Lô hàng", "SUBTITLE": "Quản lý các lô hàng là trung tâm của hệ thống.", "BTN_IMPORT": "Nhập từ Excel", "BTN_CREATE": "Tạo lô hàng",
+      "TH_ID": "ID", "TH_CODE": "Mã lô", "TH_PRODUCT": "Sản phẩm", "TH_FARM": "Nông trại", "TH_STATUS": "Trạng thái", "TH_CREATED": "Ngày tạo"
     },
     "BATCH_DETAIL": {
-      "TITLE": "Chi tiết lô hàng",
-      "SUBTITLE": "Thông tin chi tiết & timeline của lô hàng",
-      "INFO": "Thông tin lô hàng",
-      "TIMELINE": "Dòng thời gian",
-      "LBL_CODE": "Mã batch",
-      "LBL_PRODUCT": "Sản phẩm",
-      "LBL_FARM": "Nông trại",
-      "LBL_FACILITY": "Cơ sở xử lý",
-      "LBL_QTY": "Số lượng",
-      "LBL_STATUS": "Trạng thái",
-      "LBL_HARVEST": "Ngày thu hoạch",
-      "LBL_PRODUCE": "Ngày xử lý"
+      "TITLE": "Chi tiết lô hàng", "SUBTITLE": "Thông tin chi tiết & timeline của lô hàng", "INFO": "Thông tin lô hàng", "TIMELINE": "Dòng thời gian",
+      "LBL_CODE": "Mã batch", "LBL_PRODUCT": "Sản phẩm", "LBL_FARM": "Nông trại", "LBL_FACILITY": "Cơ sở xử lý", "LBL_QTY": "Số lượng", "LBL_STATUS": "Trạng thái", "LBL_HARVEST": "Ngày thu hoạch", "LBL_PRODUCE": "Ngày xử lý"
+    },
+    "PRODUCTS": {
+      "TITLE": "Danh sách Sản phẩm", "TITLE_CREATE": "Thêm sản phẩm mới", "TITLE_EDIT": "Cập nhật sản phẩm", "BTN_ADD": "Thêm sản phẩm",
+      "TH_NAME": "Tên sản phẩm", "TH_DESC": "Mô tả", "TH_CATEGORY": "Danh mục", "TH_STATUS": "Trạng thái",
+      "LBL_NAME": "Tên sản phẩm", "LBL_CATEGORY": "Danh mục", "LBL_ORIGIN": "Xuất xứ", "LBL_STATUS": "Trạng thái", "LBL_DESC": "Mô tả chi tiết",
+      "STATUS_ACTIVE": "Đang kinh doanh", "STATUS_STOP": "Ngừng kinh doanh"
+    },
+    "CATEGORIES": {
+      "TITLE": "Danh mục Sản phẩm", "TITLE_CREATE": "Thêm danh mục mới", "TITLE_EDIT": "Cập nhật danh mục", "BTN_ADD": "Thêm danh mục",
+      "TH_NAME": "Tên danh mục", "TH_DESC": "Mô tả",
+      "LBL_NAME": "Tên danh mục", "LBL_DESC": "Mô tả",
+      "EMPTY": "Không tìm thấy danh mục nào."
     },
     "TRACE": {
-      "TITLE": "Truy xuất nguồn gốc",
-      "SUBTITLE": "Nhập mã lô hàng hoặc quét QR để xem hành trình sản phẩm.",
-      "PLACEHOLDER": "VD: LOT-2025-001 hoặc mã QR",
-      "BTN_SEARCH": "Tra cứu",
-      "BLOCKCHAIN": {
-        "VERIFIED": "Dữ liệu đã được xác thực trên Blockchain",
-        "UNVERIFIED": "Dữ liệu chưa được xác thực trên Blockchain",
-        "WARNING": "Cảnh báo: Dữ liệu này có thể chưa được đồng bộ hoặc đã bị thay đổi."
-      }
+      "TITLE": "Truy xuất nguồn gốc", "SUBTITLE": "Nhập mã lô hàng hoặc quét QR để xem hành trình sản phẩm.", "PLACEHOLDER": "VD: LOT-2025-001 hoặc mã QR", "BTN_SEARCH": "Tra cứu",
+      "BLOCKCHAIN": { "VERIFIED": "Dữ liệu đã được xác thực trên Blockchain", "UNVERIFIED": "Dữ liệu chưa được xác thực trên Blockchain", "WARNING": "Cảnh báo: Dữ liệu này có thể chưa được đồng bộ hoặc đã bị thay đổi." }
     },
     "ACTIVITIES": {
-      "TITLE": "Nhật ký Hoạt động",
-      "TH_TIME": "Thời gian",
-      "TH_EVENT": "Sự kiện",
-      "TH_FARM": "Đơn vị",
-      "TH_STATUS": "Trạng thái"
+      "TITLE": "Nhật ký Hoạt động", "TH_TIME": "Thời gian", "TH_EVENT": "Sự kiện", "TH_FARM": "Đơn vị", "TH_STATUS": "Trạng thái"
     }
-  },
-  "COMMON": {
-    "LOADING": "Đang xử lý..."
   }
 }

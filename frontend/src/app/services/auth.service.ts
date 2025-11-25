@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { ApiService, ENDPOINTS } from './api.service';
 
@@ -9,14 +8,14 @@ import { ApiService, ENDPOINTS } from './api.service';
 export class AuthService {
   private tokenKey = 'ft_token';
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(private apiService: ApiService, private router: Router) { }
 
   // 1. Đăng ký
   register(data: any): Observable<any> {
     return this.apiService.post(`${ENDPOINTS.AUTH.REGISTER}`, data);
   }
 
-  // 2. Xác thực mã OTP (Backend yêu cầu bước này)
+  // 2. Xác thực mã OTP
   verifyCode(email: string, code: string): Observable<any> {
     return this.apiService.post(`${ENDPOINTS.AUTH.VERIFY_CODE}`, { email, code });
   }
@@ -32,7 +31,7 @@ export class AuthService {
     );
   }
 
-  // 4. Quên mật khẩu (Gửi OTP)
+  // 4. Quên mật khẩu
   forgotPassword(email: string): Observable<any> {
     return this.apiService.post(`${ENDPOINTS.AUTH.FORGOT_PASSWORD}`, { email });
   }

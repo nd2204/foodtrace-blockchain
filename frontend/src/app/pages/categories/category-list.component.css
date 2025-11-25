@@ -1,0 +1,153 @@
+.page {
+  padding: 32px;
+}
+
+/* HEADER */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+
+/* KHỐI ACTION */
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  
+  /* Cách 1: Khoảng cách tiêu chuẩn bằng Flexbox */
+  gap: 24px; 
+}
+
+/* SEARCH BOX */
+.search-box {
+  position: relative;
+  min-width: 280px;
+  
+  /* Cách 2 (Dự phòng): Ép buộc lề phải 24px */
+  margin-right: 24px !important;
+}
+
+.search-box input {
+  width: 100%;
+  height: 44px; /* Chiều cao cố định */
+  padding: 0 16px 0 40px; /* Chừa chỗ cho icon bên trái */
+  border: 1px solid #d1d5db;
+  border-radius: 8px; /* Bo góc tròn cho input */
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.search-box input:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+/* BUTTON */
+.btn-primary {
+  height: 44px; /* Chiều cao bằng input */
+  padding: 0 24px;
+  border-radius: 8px; /* Bo góc tròn cho nút */
+  border: none;
+  background: #22c55e;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  /* Cách 3 (Chắc chắn nhất): Ép buộc lề trái nếu các cách trên bị ghi đè */
+  margin-left: 24px !important;
+}
+
+.btn-primary:hover {
+  background: #16a34a;
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: visible;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.table th {
+  background: #f9fafb;
+  color: #4b5563;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #334155;
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ACTIONS */
+.relative-cell { position: relative; }
+
+.action-btn {
+  width: 36px; height: 36px; border-radius: 8px; border: 1px solid transparent;
+  background: transparent; color: #94a3b8; font-size: 20px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+}
+.action-btn:hover, .action-btn.active { background: #f1f5f9; color: #0f172a; }
+
+.action-menu {
+  position: absolute; right: 20px; top: 50px; width: 160px;
+  background: white; border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); border: 1px solid #f3f4f6;
+  z-index: 50; padding: 6px;
+}
+
+.menu-item {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 12px;
+  border: none; background: transparent; color: #475569; font-size: 0.9rem;
+  text-align: left; cursor: pointer; border-radius: 6px;
+}
+.menu-item:hover { background: #f8fafc; color: #0f172a; }
+.menu-item.delete:hover { background: #fef2f2; }
+
+.empty-state { text-align: center; padding: 40px; color: #94a3b8; font-style: italic; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .page-header { flex-direction: column; align-items: flex-start; }
+  .page-actions { width: 100%; gap: 16px; }
+  .search-box { width: 100%; margin-right: 0 !important; }
+  .btn-primary { width: 100%; margin-left: 0 !important; justify-content: center; }
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common'; // Thêm Location
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { BatchService } from '../../services/batches.service';
@@ -10,7 +10,7 @@ import { BatchDetail } from '../../../core/types';
   standalone: true,
   imports: [CommonModule, TranslateModule],
   templateUrl: './batch-detail.component.html',
-  styleUrls: ['./batch-detail.component.css'],
+  styleUrls: ['./batch-detail.component.css']
 })
 export class BatchDetailComponent {
   private id: number;
@@ -61,7 +61,11 @@ export class BatchDetailComponent {
   //   },
   // ];
 
-  constructor(private route: ActivatedRoute, private batchService: BatchService) {
+  constructor(
+    private route: ActivatedRoute,
+    private batchService: BatchService,
+    private location: Location // Inject Location
+  ) {
     this.id = this.route.snapshot.params['id'];
     this.batchService.detail(this.id).subscribe({
       next: (value) => {
@@ -71,5 +75,9 @@ export class BatchDetailComponent {
       error: (err) => { console.log(err) },
       complete: () => { }
     })
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

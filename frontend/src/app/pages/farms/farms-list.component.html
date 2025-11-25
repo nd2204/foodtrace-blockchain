@@ -7,12 +7,44 @@
     <div class="page-actions">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" placeholder="Tìm nông trại..." [(ngModel)]="searchTerm">
+        <input
+          type="text"
+          [placeholder]="'COMMON.Search' | translate"
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()"
+        >
       </div>
 
-      <button class="btn-primary" routerLink="/farms/create">{{ 'PAGES.FARMS.BTN_ADD' | translate }}</button>
+      <button class="btn-secondary btn-filter" (click)="toggleFilter()" [class.active]="isFilterVisible">
+        <span class="icon">🌪️</span> {{ 'COMMON.FILTER' | translate }}
+      </button>
+
+      <button class="btn-primary" routerLink="/farms/create">
+        <span class="icon">＋</span> {{ 'PAGES.FARMS.BTN_ADD' | translate }}
+      </button>
     </div>
   </header>
+
+  <div class="filter-container" *ngIf="isFilterVisible">
+    <div class="filter-header">
+      <h3>{{ 'COMMON.FILTER' | translate }}</h3>
+      <button class="close-filter" (click)="isFilterVisible = false">✕</button>
+    </div>
+    <div class="filter-row">
+      <input type="text" class="form-control" placeholder="Tên nông trại" [(ngModel)]="filter.name">
+      <input type="text" class="form-control" placeholder="Chủ sở hữu" [(ngModel)]="filter.owner">
+      <input type="text" class="form-control" placeholder="Tỉnh/Thành" [(ngModel)]="filter.province">
+      <select class="form-control" [(ngModel)]="filter.status">
+        <option value="">-- Trạng thái --</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-reset" (click)="resetFilter()">{{ 'COMMON.RESET' | translate }}</button>
+      <button class="btn-search-blue" (click)="onSearch()">{{ 'COMMON.APPLY' | translate }}</button>
+    </div>
+  </div>
 
   <table class="table">
     <thead>
@@ -22,24 +54,30 @@
         <th>{{ 'PAGES.FARMS.TH_PROVINCE' | translate }}</th>
         <th>{{ 'PAGES.FARMS.TH_OWNER' | translate }}</th>
         <th>{{ 'PAGES.FARMS.TH_STATUS' | translate }}</th>
+        <th class="text-center">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let f of filteredFarms">
+      <tr *ngFor="let f of farms">
         <td>{{ f.farm_id }}</td>
-        <td>{{ f.name }}</td>
+        <td><strong>{{ f.name }}</strong></td>
         <td>{{ f.address }}</td>
         <td>{{ f.owner_name }}</td>
         <td>
-           <span class="badge" [ngClass]="'badge-status-' + f.is_active ? `active` : `inactive`">
-            {{ f.is_active ? "Active" : "Inactive" }}
+           <span class="badge" [ngClass]="(f.is_active) ? 'badge-active' : 'badge-inactive'">
+             {{ f.is_active ? 'Active' : 'Inactive' }}
            </span>
         </td>
-      </tr>
-      <tr *ngIf="filteredFarms.length === 0">
-        <td colspan="5" style="text-align: center; padding: 20px; color: #64748b;">
-          Không tìm thấy nông trại nào.
+        <td class="text-center relative-cell">
+          <button class="action-btn" (click)="toggleMenu(f.farm_id, $event)">⋮</button>
+          <div class="action-menu" *ngIf="openDropdownId === (f.farm_id)" (click)="$event.stopPropagation()">
+            <button class="menu-item" (click)="editFarm(f.farm_id)">✏️ {{ 'COMMON.EDIT' | translate }}</button>
+            <button class="menu-item delete" (click)="deleteFarm(f.farm_id)">🗑 {{ 'COMMON.DELETE' | translate }}</button>
+          </div>
         </td>
+      </tr>
+      <tr *ngIf="farms.length === 0">
+        <td colspan="6" class="empty-state">Không tìm thấy dữ liệu.</td>
       </tr>
     </tbody>
   </table>

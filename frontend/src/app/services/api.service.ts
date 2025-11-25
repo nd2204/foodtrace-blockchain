@@ -15,6 +15,7 @@ export const ENDPOINTS = {
   },
   FARM: {
     BASE: "farms",
+    BY_ID: (id: string | number) => `farms/${id}`,
     SEARCH: "farms/search"
   },
   BATCH: {

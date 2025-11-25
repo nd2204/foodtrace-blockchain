@@ -1,0 +1,78 @@
+<div class="page">
+  <header class="page-header">
+    <button class="btn-back" (click)="goBack()">← {{ 'COMMON.BACK' | translate }}</button>
+    <h1>Thêm lô hàng mới</h1> </header>
+
+  <div class="form-card">
+    <form (ngSubmit)="onSubmit()">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Sản phẩm <span class="text-red">*</span></label>
+          <select class="form-control" [(ngModel)]="batch.product_id" name="product" required>
+            <option value="" disabled selected>-- Chọn sản phẩm --</option>
+            <option *ngFor="let p of products" [value]="p.product_id">
+              {{ p.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nông trại <span class="text-red">*</span></label>
+          <select class="form-control" [(ngModel)]="batch.farm_id" name="farm" required>
+            <option value="" disabled selected>-- Chọn nông trại --</option>
+            <option *ngFor="let f of farms" [value]="f.farm_id">
+              {{ f.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ngày sản xuất <span class="text-red">*</span></label>
+          <input type="date" class="form-control" [(ngModel)]="batch.production_date" name="prodDate" required>
+        </div>
+
+        <div class="form-group">
+          <label>Hạn sử dụng</label>
+          <input type="date" class="form-control" [(ngModel)]="batch.expiry_date" name="expDate">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Xuất xứ</label>
+        <input type="text" class="form-control" [(ngModel)]="batch.origin_type" name="origin" placeholder="VD: Lâm Đồng, Việt Nam">
+      </div>
+
+      <div class="form-group">
+        <label>Hình ảnh minh chứng</label>
+        <div class="file-upload-area" (click)="fileInput.click()">
+          <input 
+            #fileInput
+            type="file" 
+            multiple 
+            (change)="onFileSelected($event)" 
+            style="display: none"
+            accept="image/*,.pdf"
+          >
+          <div class="upload-content">
+            <span class="upload-icon">☁️</span>
+            <p *ngIf="selectedFiles.length === 0">Kéo thả hoặc bấm để chọn ảnh</p>
+            <p *ngIf="selectedFiles.length > 0" class="text-success">
+              ✅ Đã chọn {{ selectedFiles.length }} file
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="goBack()">Hủy bỏ</button>
+        <button type="submit" class="btn-save" [disabled]="isLoading">
+          {{ isLoading ? ('COMMON.LOADING' | translate) : 'Tạo mới' }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

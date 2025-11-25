@@ -1,4 +1,3 @@
-// src/app/pages/dashboard/dashboard-content.component.ts
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,9 +6,10 @@ import * as L from 'leaflet';
 import {
   DashboardService,
   DashboardSummary,
-  FarmLocation,
+  FarmLocation, // FIX: Bây giờ đã import được
 } from '../../services/dashboard.service';
 
+// Fix icon Leaflet
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -30,11 +30,11 @@ const shadowUrl = 'assets/marker-shadow.png';
   selector: 'app-dashboard-content',
   imports: [CommonModule, TranslateModule],
   templateUrl: './dashboard-content.component.html',
-  // 👇 QUAN TRỌNG: Dòng này giúp Component nhận diện file CSS mới tạo
-  styleUrls: ['./dashboard-content.component.css'] 
+  styleUrls: ['./dashboard-content.component.css']
 })
 export class DashboardContentComponent implements OnInit, OnDestroy {
-  summary: DashboardSummary | null = null;
+  // FIX: Khởi tạo mặc định đúng với interface mới
+  summary: DashboardSummary = { farms: 0, batches: 0, products: 0 };
   farms: FarmLocation[] = [];
   isLoading = false;
 
@@ -58,12 +58,11 @@ export class DashboardContentComponent implements OnInit, OnDestroy {
   private loadSummary() {
     this.isLoading = true;
     this.dashboardService.getSummary().subscribe({
-      next: (summary) => {
-        this.summary = summary;
+      next: (data) => {
+        this.summary = data;
         this.isLoading = false;
       },
       error: () => {
-        this.summary = { farms: 0, batches: 0, policies: 0, sessions: 0 };
         this.isLoading = false;
       },
     });
@@ -82,6 +81,7 @@ export class DashboardContentComponent implements OnInit, OnDestroy {
   }
 
   private initMap() {
+    // Tọa độ trung tâm Việt Nam
     this.map = L.map('dashboard-map', {
       zoomControl: true,
     }).setView([16.047079, 108.20623], 5);
@@ -91,10 +91,6 @@ export class DashboardContentComponent implements OnInit, OnDestroy {
     }).addTo(this.map);
 
     this.markersLayer = L.layerGroup().addTo(this.map);
-
-    if (this.farms.length) {
-      this.renderFarmsOnMap();
-    }
   }
 
   private renderFarmsOnMap() {
@@ -103,21 +99,23 @@ export class DashboardContentComponent implements OnInit, OnDestroy {
     this.markersLayer.clearLayers();
 
     this.farms.forEach((farm) => {
-      const marker = L.marker([farm.lat, farm.lng]);
-
-      marker.bindPopup(
-        `<strong>${farm.name}</strong><br/>
-         Khu vực: ${farm.region}<br/>
-         Trạng thái: ${farm.status}`
-      );
-      marker.addTo(this.markersLayer!);
+      // Kiểm tra tọa độ hợp lệ
+      if (farm.lat && farm.lng) {
+        const marker = L.marker([farm.lat, farm.lng]);
+        marker.bindPopup(
+          `<strong>${farm.name}</strong><br/>
+           ${farm.address}<br/>
+           <span style="color:green">${farm.status}</span>`
+        );
+        marker.addTo(this.markersLayer!);
+      }
     });
 
-    if (this.farms.length) {
+    if (this.farms.length > 0) {
       const bounds = L.latLngBounds(
         this.farms.map((f) => [f.lat, f.lng] as [number, number])
       );
-      this.map!.fitBounds(bounds, { padding: [24, 24] });
+      this.map.fitBounds(bounds, { padding: [50, 50] });
     }
   }
 }

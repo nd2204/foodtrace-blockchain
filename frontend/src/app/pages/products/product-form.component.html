@@ -1,0 +1,48 @@
+<div class="page">
+  <header class="page-header">
+    <button class="btn-back" (click)="goBack()">← {{ 'COMMON.BACK' | translate }}</button>
+    <h1>{{ (isEditMode ? 'PAGES.PRODUCTS.TITLE_EDIT' : 'PAGES.PRODUCTS.TITLE_CREATE') | translate }}</h1>
+  </header>
+
+  <div class="form-card">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>{{ 'PAGES.PRODUCTS.LBL_NAME' | translate }} <span style="color:red">*</span></label>
+        <input type="text" class="form-control" [(ngModel)]="product.name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'PAGES.PRODUCTS.LBL_CATEGORY' | translate }}</label>
+        <select class="form-control" [(ngModel)]="product.category_id" name="category">
+          <option value="">-- Chọn --</option>
+          <option *ngFor="let c of categories" [value]="c.category_id">{{ c.name }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'PAGES.PRODUCTS.LBL_ORIGIN' | translate }}</label>
+        <input type="text" class="form-control" [(ngModel)]="product.origin" name="origin">
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'PAGES.PRODUCTS.LBL_STATUS' | translate }}</label>
+        <select class="form-control" [(ngModel)]="product.status" name="status">
+          <option value="active">{{ 'PAGES.PRODUCTS.STATUS_ACTIVE' | translate }}</option>
+          <option value="discontinued">{{ 'PAGES.PRODUCTS.STATUS_STOP' | translate }}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>{{ 'PAGES.PRODUCTS.LBL_DESC' | translate }}</label>
+        <textarea class="form-control" [(ngModel)]="product.description" name="desc" rows="4"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" (click)="goBack()">{{ 'COMMON.CANCEL' | translate }}</button>
+        <button type="submit" class="btn-save" [disabled]="isLoading">
+          {{ isLoading ? ('COMMON.LOADING' | translate) : (isEditMode ? ('COMMON.SAVE' | translate) : ('COMMON.CREATE' | translate)) }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

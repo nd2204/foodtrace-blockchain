@@ -13,26 +13,15 @@
       </div>
 
       <nav class="nav-list">
-        <a routerLink="/dashboard" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
-          <span class="nav-icon">📊</span>
-          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.DASHBOARD' | translate }}</span>
-        </a>
-        <a routerLink="/farms" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
-          <span class="nav-icon">🌾</span>
-          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.FARMS' | translate }}</span>
-        </a>
-        <a routerLink="/batches" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
-          <span class="nav-icon">📦</span>
-          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.BATCHES' | translate }}</span>
-        </a>
-        <a routerLink="/trace" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
-          <span class="nav-icon">🔍</span>
-          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.TRACE' | translate }}</span>
-        </a>
-        <a routerLink="/activities" routerLinkActive="active" (click)="collapseSidebarOnNavigate()">
-          <span class="nav-icon">📝</span>
-          <span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.ACTIVITIES' | translate }}</span>
-        </a>
+        <a routerLink="/dashboard" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">📊</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.DASHBOARD' | translate }}</span></a>
+        <a routerLink="/farms" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">🌾</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.FARMS' | translate }}</span></a>
+        
+        <a routerLink="/products" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">🍎</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.PRODUCTS' | translate }}</span></a>
+        <a routerLink="/categories" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">🗂️</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.CATEGORIES' | translate }}</span></a>
+
+        <a routerLink="/batches" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">📦</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.BATCHES' | translate }}</span></a>
+        <a routerLink="/trace" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">🔍</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.TRACE' | translate }}</span></a>
+        <a routerLink="/activities" routerLinkActive="active" (click)="collapseSidebarOnNavigate()"><span class="nav-icon">📝</span><span class="nav-label" *ngIf="!isSidebarCollapsed">{{ 'NAV.ACTIVITIES' | translate }}</span></a>
       </nav>
 
       <div class="sidebar-footer">

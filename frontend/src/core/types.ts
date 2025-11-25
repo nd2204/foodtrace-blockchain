@@ -66,16 +66,27 @@ export interface BatchDetail extends Batch {
   }
 }
 
-export type BatchQuery = {
+export interface QueryRequest {
   pageIndex?: number,
   pageSize?: number,
   sortColumn?: keyof Batch,
   sortAscending?: boolean,
-  filter?: null, // TODO: replace filter types
-  batchNumber?: number,
+  filter?: string,
+}
+
+export interface BatchQuery extends QueryRequest {
+  batchNumber?: string,
   productName?: string,
   fromDate?: Date,
   toDate?: Date
+}
+
+export interface FarmQuery extends QueryRequest {
+  farmName?: string,
+  province?: string,
+  district?: string,
+  ward?: string,
+  farmId?: number | string
 }
 
 export interface TraceEvent {

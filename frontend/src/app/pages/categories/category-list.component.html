@@ -1,0 +1,61 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>{{ 'PAGES.CATEGORIES.TITLE' | translate }}</h1>
+    </div>
+    
+    <div class="page-actions">
+      
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          [placeholder]="'COMMON.Search' | translate" 
+          [(ngModel)]="searchTerm" 
+          (keyup.enter)="onSearch()"
+        >
+      </div>
+
+      <button class="btn-primary" routerLink="/categories/create">
+        <span class="icon">＋</span> {{ 'PAGES.CATEGORIES.BTN_ADD' | translate }}
+      </button>
+    
+    </div>
+  </header>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 80px">ID</th>
+        <th>{{ 'PAGES.CATEGORIES.TH_NAME' | translate }}</th>
+        <th>{{ 'PAGES.CATEGORIES.TH_DESC' | translate }}</th>
+        <th class="text-center" style="width: 120px">{{ 'COMMON.ACTIONS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of categories">
+        <td>{{ c.category_id }}</td>
+        <td style="font-weight: 600;">{{ c.name }}</td>
+        <td style="color: #6b7280;">{{ c.description || '--' }}</td>
+        
+        <td class="text-center relative-cell">
+            <button class="action-btn" (click)="toggleMenu(c.category_id, $event)">⋮</button>
+            <div class="action-menu" *ngIf="openDropdownId === c.category_id" (click)="$event.stopPropagation()">
+              <button class="menu-item" (click)="editCategory(c.category_id)">
+                ✏️ {{ 'COMMON.EDIT' | translate }}
+              </button>
+              <button class="menu-item delete" (click)="deleteCategory(c.category_id)">
+                🗑 {{ 'COMMON.DELETE' | translate }}
+              </button>
+            </div>
+        </td>
+      </tr>
+      
+      <tr *ngIf="categories.length === 0">
+        <td colspan="4" class="empty-state">
+          {{ 'PAGES.CATEGORIES.EMPTY' | translate }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

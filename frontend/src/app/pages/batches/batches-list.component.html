@@ -8,17 +8,57 @@
     <div class="page-actions">
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input
-          type="text"
-          placeholder="Tìm kiếm lô hàng..."
-          [(ngModel)]="searchTerm"
-        >
+        <!-- <input -->
+        <!--   type="text" -->
+        <!--   placeholder="Tìm kiếm lô hàng..." -->
+        <!--   [(ngModel)]="searchTerm" -->
+        <!-- > -->
+        <input type="text" [placeholder]="'COMMON.Search' | translate" [(ngModel)]="searchTerm"
+          (keyup.enter)="onSearch()">
       </div>
 
-      <button class="btn-secondary">{{ 'PAGES.BATCHES.BTN_IMPORT' | translate }}</button>
-      <button class="btn-primary">{{ 'PAGES.BATCHES.BTN_CREATE' | translate }}</button>
+      <button class="btn-secondary btn-filter" (click)="toggleFilter()" [class.active]="isFilterVisible">
+        <span class="icon">🌪️</span> {{ 'COMMON.FILTER' | translate }}
+      </button>
+
+      <div class="button-group">
+        <button class="btn-secondary">{{ 'PAGES.BATCHES.BTN_IMPORT' | translate }}</button>
+        <button class="btn-primary" routerLink="/batches/create">
+          <span class="icon">＋</span> {{ 'PAGES.BATCHES.BTN_CREATE' | translate }}
+        </button>
+      </div>
     </div>
   </header>
+
+  <div class="filter-container" *ngIf="isFilterVisible">
+    <div class="filter-header">
+      <h3>{{ 'COMMON.FILTER' | translate }}</h3>
+      <button class="close-filter" (click)="isFilterVisible = false">✕</button>
+    </div>
+
+    <div class="filter-row">
+      <input type="text" class="form-control" placeholder="Mã lô hàng" [(ngModel)]="filter.code">
+      <input type="text" class="form-control" placeholder="Tên sản phẩm" [(ngModel)]="filter.product">
+      <input type="text" class="form-control" placeholder="Tên nông trại" [(ngModel)]="filter.farm">
+      <select class="form-control" [(ngModel)]="filter.status">
+        <option value="">-- Trạng thái --</option>
+        <option value="in_farm">Tại nông trại</option>
+        <option value="in_transit">Đang vận chuyển</option>
+        <option value="delivered">Đã giao</option>
+      </select>
+    </div>
+
+    <div class="filter-row">
+      <input type="date" class="form-control" title="Từ ngày" [(ngModel)]="filter.fromDate">
+      <input type="date" class="form-control" title="Đến ngày" [(ngModel)]="filter.toDate">
+      <div style="flex: 1;"></div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="btn-reset" (click)="resetFilter()">{{ 'COMMON.RESET' | translate }}</button>
+      <button class="btn-search-blue" (click)="onSearch()">{{ 'COMMON.APPLY' | translate }}</button>
+    </div>
+  </div>
 
   <table class="table">
     <thead>
@@ -29,34 +69,35 @@
         <th>{{ 'PAGES.BATCHES.TH_FARM' | translate }}</th>
         <!-- <th>{{ 'PAGES.BATCHES.TH_STATUS' | translate }}</th> -->
         <th>{{ 'PAGES.BATCHES.TH_CREATED' | translate }}</th>
-        <th></th>
+        <th class="text-center">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let b of filteredBatches">
+      <tr *ngFor="let b of batches">
         <td>{{ b.batch_id }}</td>
-        <td>{{ b.batch_number }}</td>
+        <td><strong>{{ b.batch_number }}</strong></td>
         <td>{{ b.product_name }}</td>
         <td>{{ b.farm_name }}</td>
-        <!-- <td> -->
-        <!--   <span class="badge" [ngClass]="'badge-status-' + (b.status | lowercase).replace(' ', '-')"> -->
-        <!--     {{ b.status }} -->
-        <!--   </span> -->
-        <!-- </td> -->
-        <td>{{ b.created_at }}</td>
-        <td class="table-actions">
-          <button class="link" [routerLink]="['/batches', b.batch_id]">{{ 'PAGES.BATCHES.BTN_VIEW' | translate }}</button>
-          <button class="link" [routerLink]="['/trace']" [queryParams]="{ code: b.batch_number }">
-            {{ 'PAGES.BATCHES.BTN_TRACE' | translate }}
-          </button>
+        <!-- <td><span class="badge" [ngClass]="'badge-status-' + (b.status || 'active')">{{ b.status }}</span></td> -->
+        <td>{{ b.created_at | date:'dd/MM/yyyy' }}</td>
+        <td class="text-center relative-cell">
+          <button class="action-btn" (click)="toggleMenu(b.batch_id, $event)">⋮</button>
+          <div class="action-menu" *ngIf="openDropdownId === (b.batch_id)" (click)="$event.stopPropagation()">
+            <button class="menu-item" [routerLink]="['/batches', b.batch_id]">
+              👁 {{ 'COMMON.VIEW' | translate }}
+            </button>
+            <button class="menu-item" [routerLink]="['/trace']" [queryParams]="{ batch_number: b.batch_number }">
+              🔍 {{ 'PAGES.BATCHES.BTN_TRACE' | translate }}
+            </button>
+          </div>
         </td>
       </tr>
 
-      <tr *ngIf="filteredBatches.length === 0">
-        <td colspan="7" style="text-align: center; padding: 20px; color: #64748b;">
-          Không tìm thấy kết quả nào cho "{{ searchTerm }}"
-        </td>
-      </tr>
+      <!-- <tr *ngIf="batches.length === 0"> -->
+      <!--   <td colspan="7" style="text-align: center; padding: 20px; color: #64748b;"> -->
+      <!--     Không tìm thấy kết quả nào cho "{{ searchTerm }}" -->
+      <!--   </td> -->
+      <!-- </tr> -->
     </tbody>
   </table>
 </div>

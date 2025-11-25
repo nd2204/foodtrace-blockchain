@@ -1,0 +1,78 @@
+<div class="page">
+  <header class="page-header">
+    <h1>{{ 'PAGES.PRODUCTS.TITLE' | translate }}</h1>
+    
+    <div class="page-actions">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" [placeholder]="'COMMON.Search' | translate" [(ngModel)]="searchTerm" (keyup.enter)="onSearch()">
+      </div>
+
+      <button class="btn-secondary btn-filter" (click)="toggleFilter()" [class.active]="isFilterVisible">
+        <span class="icon">🌪️</span> {{ 'COMMON.FILTER' | translate }}
+      </button>
+
+      <button class="btn-primary" routerLink="/products/create">
+        <span class="icon">＋</span> {{ 'PAGES.PRODUCTS.BTN_ADD' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <div class="filter-container" *ngIf="isFilterVisible">
+    <div class="filter-header">
+      <h3>{{ 'COMMON.FILTER' | translate }}</h3>
+      <button class="close-filter" (click)="isFilterVisible = false">✕</button>
+    </div>
+    <div class="filter-row">
+      <input type="text" class="form-control" placeholder="Tên sản phẩm" [(ngModel)]="filter.name">
+      <input type="text" class="form-control" placeholder="Danh mục" [(ngModel)]="filter.category">
+      <select class="form-control" [(ngModel)]="filter.status">
+        <option value="">-- Trạng thái --</option>
+        <option value="active">Active</option>
+        <option value="discontinued">Discontinued</option>
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn-reset" (click)="resetFilter()">{{ 'COMMON.RESET' | translate }}</button>
+      <button class="btn-search-blue" (click)="onSearch()">{{ 'COMMON.APPLY' | translate }}</button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 60px">ID</th>
+        <th>{{ 'PAGES.PRODUCTS.TH_NAME' | translate }}</th>
+        <th>{{ 'PAGES.PRODUCTS.TH_DESC' | translate }}</th>
+        <th>{{ 'PAGES.PRODUCTS.TH_CATEGORY' | translate }}</th>
+        <th>{{ 'PAGES.PRODUCTS.TH_STATUS' | translate }}</th>
+        <th class="text-center" style="width: 80px">{{ 'COMMON.ACTIONS' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.product_id }}</td>
+        <td style="font-weight: 600;">{{ p.name }}</td>
+        <td style="color: #6b7280; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+          {{ p.description || '--' }}
+        </td>
+        <td>{{ p.category_name || '--' }}</td>
+        <td>
+          <span class="badge" [ngClass]="p.status === 'active' ? 'badge-active' : 'badge-inactive'">
+            {{ p.status }}
+          </span>
+        </td>
+        <td class="text-center relative-cell">
+          <button class="action-btn" (click)="toggleMenu(p.product_id, $event)">⋮</button>
+          <div class="action-menu" *ngIf="openDropdownId === p.product_id" (click)="$event.stopPropagation()">
+            <button class="menu-item" (click)="editProduct(p.product_id)">✏️ {{ 'COMMON.EDIT' | translate }}</button>
+            <button class="menu-item delete" (click)="deleteProduct(p.product_id)">🗑 {{ 'COMMON.DELETE' | translate }}</button>
+          </div>
+        </td>
+      </tr>
+      <tr *ngIf="products.length === 0">
+        <td colspan="6" class="empty-state">Không tìm thấy dữ liệu.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

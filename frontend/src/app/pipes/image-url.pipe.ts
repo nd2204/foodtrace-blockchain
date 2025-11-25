@@ -8,13 +8,12 @@ import { environment } from '../../environments/environment';
 export class ImageUrlPipe implements PipeTransform {
   transform(value: string | null | undefined): string {
     if (!value) {
-      // Link ảnh mặc định nếu không có ảnh
-      return 'assets/images/no-image.png'; 
+      return 'assets/images/no-image.png'; // Ảnh mặc định nếu null
     }
     if (value.startsWith('http')) {
       return value; // Nếu là link online thì giữ nguyên
     }
-    // Nối đường dẫn API vào trước: http://localhost:3000/uploads/...
+    // Nối domain API vào trước đường dẫn
     return `${environment.apiUrl}${value}`;
   }
 }

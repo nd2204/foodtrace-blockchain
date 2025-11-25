@@ -1,142 +1,61 @@
 {
-  "APP": {
-    "TITLE": "Smart agriculture traceability from farm to table."
-  },
+  "APP": { "TITLE": "Smart agriculture traceability from farm to table." },
   "NAV": {
-    "DASHBOARD": "Dashboard",
-    "FARMS": "Farms",
-    "BATCHES": "Batches",
-    "TRACE": "Traceability",
-    "ACTIVITIES": "Activities",
-    "TRANSPORT": "Transport",
-    "DISTRIBUTION": "Distribution"
+    "DASHBOARD": "Dashboard", "FARMS": "Farms", "BATCHES": "Batches", "PRODUCTS": "Products", "CATEGORIES": "Categories", "TRACE": "Traceability", "ACTIVITIES": "Activities", "TRANSPORT": "Transport", "DISTRIBUTION": "Distribution"
   },
-  "SIDEBAR": {
-    "ACCOUNT": "Account",
-    "LOGOUT": "Logout"
+  "SIDEBAR": { "ACCOUNT": "Account", "LOGOUT": "Logout" },
+  "DASHBOARD": { "TITLE": "Dashboard", "WELCOME": "Live insights across your supply chain." },
+  "SUMMARY": { "FARMS": "Farms", "BATCHES": "Batches", "PRODUCTS": "Products", "ACTIVE_POLICIES": "Policies", "SESSIONS": "Sessions" },
+  "COMMON": {
+    "Search": "Search...", "LOADING": "Loading...", "BACK": "Back", "ACTIONS": "Actions", "VIEW": "View", "DELETE": "Delete", "EDIT": "Edit", "TRACE": "Trace", "FILTER": "Filter", "APPLY": "Apply", "RESET": "Reset", "SAVE": "Save", "CREATE": "Create", "CANCEL": "Cancel"
   },
-  "DASHBOARD": {
-    "TITLE": "Dashboard",
-    "WELCOME": "Live insights across your supply chain."
-  },
-  "SUMMARY": {
-    "FARMS": "Active Farms",
-    "BATCHES": "Active Batches",
-    "ACTIVE_POLICIES": "Active Policies",
-    "SESSIONS": "Sessions"
-  },
-  "MAP": {
-    "VIETNAM": "Vietnam Farm Network"
-  },
+  "MAP": { "VIETNAM": "Vietnam Farm Network" },
   "AUTH": {
     "LOGIN": {
-      "TITLE": "Sign In",
-      "SUBTITLE": "Access the supply chain platform.",
-      "EMAIL": "Email",
-      "PASSWORD": "Password",
-      "BUTTON": "Login",
-      "FORGOT": "Forgot password?",
-      "REGISTER": "Create account"
+      "TITLE": "Sign In", "SUBTITLE": "Access the supply chain platform.", "EMAIL": "Email", "PASSWORD": "Password", "BUTTON": "Login", "FORGOT": "Forgot password?", "REGISTER": "Create account"
     },
     "REGISTER": {
-      "TITLE": "Create Account",
-      "SUBTITLE": "Join the clean agriculture network.",
-      "FULLNAME": "Full Name",
-      "EMAIL": "Email",
-      "PASSWORD": "Password",
-      "CONFIRM_PASSWORD": "Confirm Password",
-      "ROLE": "Role",
-      "ROLE_FARMER": "Farmer",
-      "ROLE_TRANSPORT": "Transporter",
-      "ROLE_DISTRIBUTION": "Distributor",
-      "BUTTON": "Register",
-      "ALREADY": "Already have an account?",
-      "BACK_TO_LOGIN": "Back to login"
+      "TITLE": "Create Account", "SUBTITLE": "Join the clean agriculture network.", "FULLNAME": "Full Name", "EMAIL": "Email", "PASSWORD": "Password", "CONFIRM_PASSWORD": "Confirm Password", "ROLE": "Role", "ROLE_FARMER": "Farmer", "ROLE_TRANSPORT": "Transporter", "ROLE_DISTRIBUTION": "Distributor", "BUTTON": "Register", "ALREADY": "Already have an account?", "BACK_TO_LOGIN": "Back to login"
     },
     "FORGOT": {
-      "TITLE": "Forgot Password",
-      "SUBTITLE": "Enter your email to receive a reset code.",
-      "EMAIL": "Registered Email",
-      "BUTTON_SEND": "Send Code",
-      "STEP2_TITLE": "Reset Password",
-      "STEP2_SUBTITLE": "Enter the OTP code and your new password.",
-      "LABEL_CODE": "OTP Code",
-      "LABEL_NEW_PASS": "New Password",
-      "LABEL_CONFIRM_PASS": "Confirm New Password",
-      "BUTTON_RESET": "Reset Password",
-      "SUCCESS": "Password reset successful! Redirecting...",
-      "BACK": "Back to login"
+      "TITLE": "Forgot Password", "SUBTITLE": "Enter your email to receive a reset link.", "TITLE_RESET": "Reset Password", "SUBTITLE_RESET": "Enter OTP code and new password.", "EMAIL": "Registered Email", "CODE": "OTP Code (6 digits)", "NEW_PASSWORD": "New Password", "CONFIRM_PASSWORD": "Confirm Password", "BUTTON_SEND": "Send OTP", "BUTTON_RESET": "Reset Password", "BACK": "Back to login", "SUCCESS_SEND": "OTP code sent to your email.", "SUCCESS_RESET": "Password reset successful! Please login."
     },
     "VERIFY": {
-      "TITLE": "Account Verification",
-      "SUBTITLE": "Please enter the 6-digit OTP sent to your email.",
-      "LABEL_EMAIL": "Email",
-      "LABEL_CODE": "OTP Code",
-      "PLACEHOLDER_CODE": "Ex: 123456",
-      "BUTTON": "Verify",
-      "SUCCESS": "Verification successful!",
-      "REDIRECT": "Redirecting to login...",
-      "BACK": "Back to login"
+      "TITLE": "Account Verification", "SUBTITLE": "Please enter the 6-digit OTP sent to your email.", "LABEL_EMAIL": "Email", "LABEL_CODE": "OTP Code", "PLACEHOLDER_CODE": "Ex: 123456", "BUTTON": "Verify", "SUCCESS": "Verification successful!", "REDIRECT": "Redirecting to system...", "BACK": "Back to login"
     }
   },
   "PAGES": {
     "FARMS": {
-      "TITLE": "Farms List",
-      "BTN_ADD": "Add new farm",
-      "TH_ID": "ID",
-      "TH_NAME": "Farm Name",
-      "TH_PROVINCE": "Province",
-      "TH_OWNER": "Owner",
-      "TH_STATUS": "Status"
+      "TITLE": "Farms List", "TITLE_CREATE": "Create New Farm", "TITLE_EDIT": "Update Farm", "BTN_ADD": "Add Farm",
+      "TH_ID": "ID", "TH_NAME": "Farm Name", "TH_PROVINCE": "Province", "TH_OWNER": "Owner", "TH_STATUS": "Status",
+      "LBL_NAME": "Farm Name", "LBL_OWNER": "Owner", "LBL_ADDRESS": "Address", "LBL_EMAIL": "Email", "LBL_PHONE": "Phone", "LBL_WEBSITE": "Website"
     },
     "BATCHES": {
-      "TITLE": "Batches Management",
-      "SUBTITLE": "Manage batches as the core of the system.",
-      "BTN_IMPORT": "Import Excel",
-      "BTN_CREATE": "Create batch",
-      "TH_ID": "ID",
-      "TH_CODE": "Code",
-      "TH_PRODUCT": "Product",
-      "TH_FARM": "Farm",
-      "TH_STATUS": "Status",
-      "TH_CREATED": "Created At",
-      "BTN_VIEW": "View",
-      "BTN_TRACE": "Trace"
+      "TITLE": "Batches Management", "SUBTITLE": "Manage batches as the core of the system.", "BTN_IMPORT": "Import Excel", "BTN_CREATE": "Create Batch",
+      "TH_ID": "ID", "TH_CODE": "Batch Code", "TH_PRODUCT": "Product", "TH_FARM": "Farm", "TH_STATUS": "Status", "TH_CREATED": "Created At"
     },
     "BATCH_DETAIL": {
-      "TITLE": "Batch Details",
-      "SUBTITLE": "Detailed info & timeline for batch",
-      "INFO": "Batch Information",
-      "TIMELINE": "Timeline",
-      "LBL_CODE": "Batch Code",
-      "LBL_PRODUCT": "Product",
-      "LBL_FARM": "Farm",
-      "LBL_FACILITY": "Facility",
-      "LBL_QTY": "Quantity",
-      "LBL_STATUS": "Status",
-      "LBL_HARVEST": "Harvested At",
-      "LBL_PRODUCE": "Produced At"
+      "TITLE": "Batch Details", "SUBTITLE": "Detailed info & timeline for batch", "INFO": "Batch Information", "TIMELINE": "Timeline",
+      "LBL_CODE": "Batch Code", "LBL_PRODUCT": "Product", "LBL_FARM": "Farm", "LBL_FACILITY": "Facility", "LBL_QTY": "Quantity", "LBL_STATUS": "Status", "LBL_HARVEST": "Harvested At", "LBL_PRODUCE": "Produced At"
+    },
+    "PRODUCTS": {
+      "TITLE": "Products List", "TITLE_CREATE": "Create Product", "TITLE_EDIT": "Update Product", "BTN_ADD": "Add Product",
+      "TH_NAME": "Product Name", "TH_DESC": "Description", "TH_CATEGORY": "Category", "TH_STATUS": "Status",
+      "LBL_NAME": "Product Name", "LBL_CATEGORY": "Category", "LBL_ORIGIN": "Origin", "LBL_STATUS": "Status", "LBL_DESC": "Description",
+      "STATUS_ACTIVE": "Active", "STATUS_STOP": "Discontinued"
+    },
+    "CATEGORIES": {
+      "TITLE": "Product Categories", "TITLE_CREATE": "Create Category", "TITLE_EDIT": "Update Category", "BTN_ADD": "Add Category",
+      "TH_NAME": "Category Name", "TH_DESC": "Description",
+      "LBL_NAME": "Category Name", "LBL_DESC": "Description",
+      "EMPTY": "No categories found."
     },
     "TRACE": {
-      "TITLE": "Product Traceability",
-      "SUBTITLE": "Enter batch code or QR to view product journey.",
-      "PLACEHOLDER": "Ex: LOT-2025-001 or QR code",
-      "BTN_SEARCH": "Trace",
-      "BLOCKCHAIN": {
-        "VERIFIED": "Data verified on Blockchain",
-        "UNVERIFIED": "Data not verified on Blockchain",
-        "WARNING": "Warning: Data might be unsynced or altered."
-      }
+      "TITLE": "Product Traceability", "SUBTITLE": "Enter batch code or QR to view product journey.", "PLACEHOLDER": "Ex: LOT-2025-001 or QR code", "BTN_SEARCH": "Trace",
+      "BLOCKCHAIN": { "VERIFIED": "Data verified on Blockchain", "UNVERIFIED": "Data not verified on Blockchain", "WARNING": "Warning: Data might be unsynced or altered." }
     },
     "ACTIVITIES": {
-      "TITLE": "Activity Log",
-      "TH_TIME": "Time",
-      "TH_EVENT": "Event",
-      "TH_FARM": "Entity",
-      "TH_STATUS": "Status"
+      "TITLE": "Activity Log", "TH_TIME": "Time", "TH_EVENT": "Event", "TH_FARM": "Entity", "TH_STATUS": "Status"
     }
-  },
-  "COMMON": {
-    "LOADING": "Loading..."
   }
 }
