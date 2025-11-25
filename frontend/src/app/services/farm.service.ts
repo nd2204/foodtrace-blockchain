@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { ApiService, ENDPOINTS } from './api.service';
+import { Farm, IPaginated } from '../../core/types';
 
 @Injectable({ providedIn: 'root' })
 export class FarmService {
-  private apiUrl = `${environment.apiUrl}/api/farms`;
-
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) { }
 
   // Hàm tạo nông trại có upload file
-  createFarm(data: any, files: File[]): Observable<any> {
+  create(data: any, files: File[]): Observable<any> {
     const formData = new FormData();
 
     // Append các trường text
@@ -19,7 +18,7 @@ export class FarmService {
     formData.append('owner_name', data.ownerName);
     formData.append('contact_email', data.email);
     formData.append('contact_phone', data.phone);
-    
+
     // Append file (Key là 'files' giống backend multer config)
     if (files && files.length > 0) {
       files.forEach(file => {
@@ -27,11 +26,11 @@ export class FarmService {
       });
     }
 
-    return this.http.post(`${this.apiUrl}/create`, formData);
+    return this.apiService.post(`${ENDPOINTS.FARM.BASE}`, formData);
   }
 
   // Hàm lấy danh sách (Search)
-  searchFarms(query: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/search`, query);
+  search(query: any): Observable<IPaginated<Farm>> {
+    return this.apiService.post<IPaginated<Farm>>(`${ENDPOINTS.FARM.SEARCH}`, query);
   }
 }

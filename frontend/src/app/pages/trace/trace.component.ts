@@ -16,7 +16,7 @@ export class TraceComponent {
   code = '';
   isLoading = false;
   errorMessage = '';
-  
+
   // Dữ liệu hiển thị
   result: any = null;
   timelineEvents: any[] = [];
@@ -55,10 +55,11 @@ export class TraceComponent {
         this.isLoading = false;
         this.result = data;
         this.buildTimeline(data);
+        console.log(data)
       },
       error: (err) => {
         this.isLoading = false;
-        this.errorMessage = err.message || 'Không tìm thấy lô hàng.';
+        this.errorMessage = err.error || 'Không tìm thấy lô hàng.';
       }
     });
   }
@@ -96,9 +97,9 @@ export class TraceComponent {
     if (data.blockchain && data.blockchain.verified) {
       events.push({
         label: 'Xác thực Blockchain',
-        time: data.blockchain.onChainTime 
-              ? new Date(parseInt(data.blockchain.onChainTime) * 1000).toLocaleString() 
-              : 'N/A',
+        time: data.blockchain.onChainTime
+          ? new Date(parseInt(data.blockchain.onChainTime) * 1000).toLocaleString()
+          : 'N/A',
         location: 'Blockchain Network',
         actor: 'System Smart Contract',
         status: 'done',

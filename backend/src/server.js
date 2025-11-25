@@ -1,5 +1,5 @@
 const app = require('./app');
-const getPool = require('./config/db.config');
+const { getPool } = require('./config/db.config');
 
 const PORT = process.env.PORT || 3000;
 const loadInitialSearchIndex = require("./init/search.loader");

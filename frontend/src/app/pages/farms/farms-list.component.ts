@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FarmService } from '../../services/farm.service';
+import { Farm } from '../../../core/types';
 
 @Component({
   selector: 'app-farms-list',
@@ -13,20 +15,30 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
 })
 export class FarmsListComponent {
   searchTerm: string = '';
+  farms: Farm[] = [];
+  isLoading: boolean;
 
-  allFarms = [
-    { id: 1, name: 'Farm A', province: 'Đà Lạt', owner: 'Nguyễn Văn A', status: 'active' },
-    { id: 2, name: 'Farm B', province: 'Lâm Đồng', owner: 'Trần Thị B', status: 'warning' },
-    { id: 3, name: 'Green Farm', province: 'Đồng Nai', owner: 'Lê Văn C', status: 'active' },
-  ];
+  constructor(
+    private farmService: FarmService
+  ) {
+    this.isLoading = true;
+    this.farmService.search(this.searchTerm).subscribe({
+      next: (value) => {
+        this.farms = value.data;
+        console.log(value)
+      },
+      error: (err) => { console.log(err) },
+      complete: () => { this.isLoading = false }
+    });
+  }
 
   get filteredFarms() {
-    if (!this.searchTerm) return this.allFarms;
+    if (!this.searchTerm) return this.farms;
     const lowerTerm = this.searchTerm.toLowerCase();
-    return this.allFarms.filter(f => 
-      f.name.toLowerCase().includes(lowerTerm) || 
-      f.owner.toLowerCase().includes(lowerTerm) ||
-      f.province.toLowerCase().includes(lowerTerm)
+    return this.farms.filter(f =>
+      f.name.toLowerCase().includes(lowerTerm) ||
+      f.owner_name.toLowerCase().includes(lowerTerm) ||
+      f.address.toLowerCase().includes(lowerTerm)
     );
   }
 }

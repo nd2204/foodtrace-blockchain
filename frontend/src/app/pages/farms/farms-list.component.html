@@ -3,7 +3,7 @@
     <div>
       <h1>{{ 'PAGES.FARMS.TITLE' | translate }}</h1>
     </div>
-    
+
     <div class="page-actions">
       <div class="search-box">
         <span class="search-icon">🔍</span>
@@ -26,13 +26,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let f of filteredFarms">
-        <td>{{ f.id }}</td>
+        <td>{{ f.farm_id }}</td>
         <td>{{ f.name }}</td>
-        <td>{{ f.province }}</td>
-        <td>{{ f.owner }}</td>
+        <td>{{ f.address }}</td>
+        <td>{{ f.owner_name }}</td>
         <td>
-           <span class="badge" [ngClass]="'badge-status-' + f.status">
-            {{ f.status }}
+           <span class="badge" [ngClass]="'badge-status-' + f.is_active ? `active` : `inactive`">
+            {{ f.is_active ? "Active" : "Inactive" }}
            </span>
         </td>
       </tr>

@@ -3,7 +3,7 @@
  * Khởi tạo MiniSearch bằng dữ liệu có sẵn trong MySQL
  */
 
-const getPool = require("../config/db.config"); 
+const { getPool } = require("../config/db.config"); 
 const SearchService = require("../services/search.service");
 
 async function loadInitialSearchIndex() {

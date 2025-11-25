@@ -9,6 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
+import { appConfig } from './app/app.config';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,28 +25,4 @@ export function initializeApp(translate: TranslateService) {
 }
 
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient(),
-    provideAnimations(),
-    importProvidersFrom(
-      HttpClientModule,
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
-        },
-        // ĐÃ XÓA: defaultLanguage: 'vi',
-      })
-    ),
-    // FIX: Sử dụng APP_INITIALIZER để chạy hàm khởi tạo trước khi ứng dụng hoạt động
-    {
-        provide: APP_INITIALIZER,
-        useFactory: initializeApp,
-        deps: [TranslateService],
-        multi: true,
-    },
-  ],
-}).catch((err) => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

@@ -24,11 +24,11 @@
   <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
   <div class="trace-result" *ngIf="result">
-    
-    <div class="blockchain-status" 
+
+    <div class="blockchain-status"
          [class.verified]="result.blockchain?.verified"
          [class.unverified]="!result.blockchain?.verified">
-      
+
       <div class="bc-icon">
         {{ result.blockchain?.verified ? '✅' : '⚠️' }}
       </div>
@@ -50,7 +50,7 @@
       <div>
         <h3 class="product-name">{{ result.product?.name || 'Sản phẩm chưa đặt tên' }}</h3>
         <p class="product-desc">{{ result.product?.description }}</p>
-        
+
         <div class="meta-grid">
           <div class="meta-item">
             <span class="label">Mã lô hàng:</span>

@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable, forkJoin, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { ApiService, ENDPOINTS } from './api.service';
 
 @Injectable({ providedIn: 'root' })
 export class TraceService {
-  private apiUrl = `${environment.apiUrl}/api/trace`;
-
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) { }
 
   /**
    * Gọi đồng thời 2 API để lấy full thông tin:
@@ -16,11 +13,15 @@ export class TraceService {
    * 2. Thông tin chi tiết (Blockchain, Farm, Media)
    */
   traceFullInfo(batchCode: string): Observable<any> {
-    const basic$ = this.http.get<any>(`${this.apiUrl}/${batchCode}`).pipe(
+    const basic$ = this.apiService.get<any>(
+      ENDPOINTS.TRACE.TRACE_BATCH_NUMBER(batchCode)
+    ).pipe(
       catchError(err => of({ error: true, msg: 'Không tìm thấy thông tin cơ bản' }))
     );
 
-    const details$ = this.http.get<any>(`${this.apiUrl}/${batchCode}/details`).pipe(
+    const details$ = this.apiService.get<any>(
+      ENDPOINTS.TRACE.TRACE_BATCH_NUMBER_DETAILED(batchCode),
+    ).pipe(
       catchError(err => of({ error: true, msg: 'Không tìm thấy thông tin chi tiết' }))
     );
 

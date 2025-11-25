@@ -11,11 +11,11 @@ app.use(express.json());
 // routes
 app.use('/api', require('./routes/search.routes'));
 app.use('/api/auth', require('./routes/auth.routes'));
-app.use('/api', require('./routes/product.routes'));
-app.use('/api', require('./routes/batches.routes'));
-app.use('/api', require('./routes/farm.routes'));
-app.use('/api', require('./routes/trace.routes'));
-app.use("/api", require("./routes/farm_licenses.routes"));
+app.use('/api/products', require('./routes/product.routes'));
+app.use('/api/batches', require('./routes/batches.routes'));
+app.use('/api/farms', require('./routes/farm.routes'));
+app.use('/api/trace', require('./routes/trace.routes'));
+app.use("/api/farm-licences", require("./routes/farm_licenses.routes"));
 app.use("/api", require("./routes/lab_tests.routes"));
 app.use("/api", require("./routes/categories.routes"));
 app.use("/api", require("./routes/dashboard.routes"));

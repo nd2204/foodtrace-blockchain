@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const { getPool } = require("../config/db.config");
 const { contract } = require("../config/blockchain");
 const SearchService = require("../services/search.service"); // ✅ MiniSearch
+const FarmsQuery = require("../requests/FarmsQuery");
 
 /**
  * 🧩 Tạo hash farm
@@ -62,7 +63,7 @@ const farmController = {
           longitude || null,
           website || null,
           userId,
-        ]
+        ],
       );
 
       const farm_id = result.insertId;
@@ -81,7 +82,7 @@ const farmController = {
         await conn.query(
           `INSERT INTO media_files (entity_type, entity_id, file_url, file_type, caption, uploaded_by)
            VALUES ?`,
-          [fileRecords]
+          [fileRecords],
         );
       }
 
@@ -144,7 +145,7 @@ const farmController = {
           `%${query.filter}%`,
           `%${query.filter}%`,
           `%${query.filter}%`,
-          `%${query.filter}%`
+          `%${query.filter}%`,
         );
       }
 
@@ -182,7 +183,7 @@ const farmController = {
       // ---------- COUNT ----------
       const [countRows] = await pool.query(
         `SELECT COUNT(*) AS total ${baseQuery}`,
-        params
+        params,
       );
       const total = countRows[0].total;
 
@@ -209,7 +210,6 @@ const farmController = {
         },
         data: rows,
       });
-
     } catch (err) {
       console.error("searchFarms error:", err);
       return res.status(500).json({
@@ -232,7 +232,7 @@ const farmController = {
       if (role === "manufacturer") {
         const [check] = await pool.query(
           `SELECT created_by FROM farms WHERE farm_id = ?`,
-          [id]
+          [id],
         );
         if (!check.length) {
           return res
@@ -249,7 +249,7 @@ const farmController = {
 
       const [rows] = await pool.query(
         `SELECT * FROM farms WHERE farm_id = ? AND is_active = TRUE`,
-        [id]
+        [id],
       );
 
       if (!rows.length) {
@@ -285,7 +285,7 @@ const farmController = {
       const [farms] = await conn.query(
         `SELECT farm_id, name, created_by, is_active 
          FROM farms WHERE farm_id = ?`,
-        [id]
+        [id],
       );
 
       if (!farms.length) {
@@ -317,7 +317,7 @@ const farmController = {
         `UPDATE farms 
          SET is_active = FALSE, updated_by = ?, updated_at = NOW()
          WHERE farm_id = ?`,
-        [userId, id]
+        [userId, id],
       );
 
       await conn.commit();

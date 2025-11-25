@@ -1,9 +1,10 @@
+@if (data) {
 <div class="page">
   <header class="page-header">
     <div>
       <h1>{{ 'PAGES.BATCH_DETAIL.TITLE' | translate }}</h1>
       <p class="page-subtitle">
-        {{ 'PAGES.BATCH_DETAIL.SUBTITLE' | translate }} {{ batch.code }}
+        {{ 'PAGES.BATCH_DETAIL.SUBTITLE' | translate }} {{ data.batch_number }}
       </p>
     </div>
   </header>
@@ -14,53 +15,54 @@
       <div class="info-grid">
         <div>
           <label>{{ 'PAGES.BATCH_DETAIL.LBL_CODE' | translate }}</label>
-          <p>{{ batch.code }}</p>
+          <p>{{ data.batch_number }}</p>
         </div>
         <div>
           <label>{{ 'PAGES.BATCH_DETAIL.LBL_PRODUCT' | translate }}</label>
-          <p>{{ batch.productName }}</p>
+          <p>{{ data.product_name }}</p>
         </div>
         <div>
           <label>{{ 'PAGES.BATCH_DETAIL.LBL_FARM' | translate }}</label>
-          <p>{{ batch.farmName }}</p>
+          <p>{{ data.farm_name }}</p>
         </div>
-        <div>
-          <label>{{ 'PAGES.BATCH_DETAIL.LBL_FACILITY' | translate }}</label>
-          <p>{{ batch.facilityName }}</p>
-        </div>
-        <div>
-          <label>{{ 'PAGES.BATCH_DETAIL.LBL_QTY' | translate }}</label>
-          <p>{{ batch.quantity }} {{ batch.unit }}</p>
-        </div>
-        <div>
-          <label>{{ 'PAGES.BATCH_DETAIL.LBL_STATUS' | translate }}</label>
-          <p>{{ batch.status }}</p>
-        </div>
-        <div>
-          <label>{{ 'PAGES.BATCH_DETAIL.LBL_HARVEST' | translate }}</label>
-          <p>{{ batch.harvestedAt }}</p>
-        </div>
+        <!-- <div> -->
+        <!--   <label>{{ 'PAGES.BATCH_DETAIL.LBL_FACILITY' | translate }}</label> -->
+        <!--   <p>{{ data.facilityName }}</p> -->
+        <!-- </div> -->
+        <!-- <div> -->
+        <!--   <label>{{ 'PAGES.BATCH_DETAIL.LBL_QTY' | translate }}</label> -->
+        <!--   <p>{{ batch.quantity }} {{ batch.unit }}</p> -->
+        <!-- </div> -->
+        <!-- <div> -->
+        <!--   <label>{{ 'PAGES.BATCH_DETAIL.LBL_STATUS' | translate }}</label> -->
+        <!--   <p>{{ batch.status }}</p> -->
+        <!-- </div> -->
+        <!-- <div> -->
+        <!--   <label>{{ 'PAGES.BATCH_DETAIL.LBL_HARVEST' | translate }}</label> -->
+        <!--   <p>{{ batch.harvestedAt }}</p> -->
+        <!-- </div> -->
         <div>
           <label>{{ 'PAGES.BATCH_DETAIL.LBL_PRODUCE' | translate }}</label>
-          <p>{{ batch.producedAt }}</p>
+          <p>{{ data.production_date }}</p>
         </div>
       </div>
     </section>
 
-    <section class="card">
-      <h2>{{ 'PAGES.BATCH_DETAIL.TIMELINE' | translate }}</h2>
-      <ul class="simple-timeline">
-        <li *ngFor="let t of timeline">
-          <div class="dot"></div>
-          <div class="content">
-            <strong>{{ t.label }}</strong>
-            <p class="meta">
-              <span>⏱ {{ t.time }}</span>
-              <span>👤 {{ t.by }}</span>
-            </p>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <!-- <section class="card"> -->
+    <!--   <h2>{{ 'PAGES.BATCH_DETAIL.TIMELINE' | translate }}</h2> -->
+    <!--   <ul class="simple-timeline"> -->
+    <!--     <li *ngFor="let t of timeline"> -->
+    <!--       <div class="dot"></div> -->
+    <!--       <div class="content"> -->
+    <!--         <strong>{{ t.label }}</strong> -->
+    <!--         <p class="meta"> -->
+    <!--           <span>⏱ {{ t.time }}</span> -->
+    <!--           <span>👤 {{ t.by }}</span> -->
+    <!--         </p> -->
+    <!--       </div> -->
+    <!--     </li> -->
+    <!--   </ul> -->
+    <!-- </section> -->
   </div>
 </div>
+}
