@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "hardhat node",
+    "deploy": "hardhat compile && hardhat run scripts/deploy.js --network sepolia",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
