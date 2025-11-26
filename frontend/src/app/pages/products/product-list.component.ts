@@ -17,20 +17,18 @@ export class ProductListComponent implements OnInit {
   openDropdownId: any = null;
   searchTerm = '';
 
-  // FIX: Thêm các biến cho bộ lọc
   isFilterVisible = false;
   filter = { name: '', category: '', status: '' };
 
   constructor(
     private productService: ProductService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadProducts();
   }
 
-  // FIX: Hàm bật tắt bộ lọc
   toggleFilter() { this.isFilterVisible = !this.isFilterVisible; }
 
   loadProducts() {
@@ -38,15 +36,15 @@ export class ProductListComponent implements OnInit {
       pageIndex: 1,
       pageSize: 20,
       filter: this.searchTerm,
-      // FIX: Thêm tham số lọc nâng cao
       name: this.isFilterVisible ? this.filter.name : '',
       // categoryId: ... nếu muốn lọc theo danh mục
       sortColumn: 'created_at',
       sortAscending: false
     };
-    this.productService.searchProducts(query).subscribe({
+    this.productService.search(query).subscribe({
       next: (res) => {
         this.products = res.data || [];
+        console.log(res.data);
       }
     });
   }
@@ -68,7 +66,7 @@ export class ProductListComponent implements OnInit {
 
   deleteProduct(id: any) {
     if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
-      this.productService.deleteProduct(id).subscribe({
+      this.productService.delete(id).subscribe({
         next: () => {
           alert('Đã xóa thành công!');
           this.loadProducts();

@@ -39,6 +39,17 @@ export interface Farm {
   website: string | null
 }
 
+export interface Product {
+  category_name: string
+  created_at: Date
+  description: string
+  name: string
+  origin: string
+  product_id: number
+  status: string
+  updated_at: Date
+}
+
 export interface Batch {
   applied_license_id: number
   batch_id: number

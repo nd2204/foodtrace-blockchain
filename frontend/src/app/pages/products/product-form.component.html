@@ -13,9 +13,9 @@
 
       <div class="form-group">
         <label>{{ 'PAGES.PRODUCTS.LBL_CATEGORY' | translate }}</label>
-        <select class="form-control" [(ngModel)]="product.category_id" name="category">
+        <select class="form-control" [(ngModel)]="product.category_name" name="category">
           <option value="">-- Chọn --</option>
-          <option *ngFor="let c of categories" [value]="c.category_id">{{ c.name }}</option>
+          <option *ngFor="let c of categories" [value]="c.category_name">{{ c.name }}</option>
         </select>
       </div>
 

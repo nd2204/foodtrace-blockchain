@@ -1,43 +1,33 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { ApiService, ENDPOINTS } from './api.service';
+import { IPaginated, IResponse, Product } from '../../core/types';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  private apiUrl = `${environment.apiUrl}/api/products`;
+  constructor(private apiService: ApiService) { }
 
-  constructor(private http: HttpClient) {}
-
-  // 1. Tìm kiếm / Lấy danh sách (cho trang danh sách)
-  searchProducts(query: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/search`, query);
+  search(query: any): Observable<IPaginated<Product>> {
+    return this.apiService.post<IPaginated<Product>>(ENDPOINTS.PRODUCTS.SEARCH, query);
   }
 
-  // 👇 FIX: THÊM HÀM NÀY ĐỂ SỬA LỖI
-  // 2. Lấy tất cả sản phẩm (cho dropdown chọn khi tạo batch)
-  getAllProducts(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  getAll(): Observable<any> {
+    return this.apiService.get(ENDPOINTS.PRODUCTS.BASE);
   }
 
-  // 3. Lấy chi tiết 1 sản phẩm (cho trang Sửa)
-  getProductById(id: string | number): Observable<any> {
-    // Nếu backend chưa có API GET /:id, dùng search tạm
-    return this.http.post(`${this.apiUrl}/search`, { productId: id });
+  detail(id: string | number): Observable<IResponse<Product>> {
+    return this.apiService.get<IResponse<Product>>(ENDPOINTS.PRODUCTS.BY_ID(id));
   }
 
-  // 4. Tạo mới
-  createProduct(data: any): Observable<any> {
-    return this.http.post(this.apiUrl, data);
+  create(data: any): Observable<any> {
+    return this.apiService.post<IResponse<Product>>(ENDPOINTS.PRODUCTS.BASE, data);
   }
 
-  // 5. Cập nhật
-  updateProduct(id: string | number, data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, data);
+  update(id: string | number, data: any): Observable<any> {
+    return this.apiService.put(ENDPOINTS.PRODUCTS.BY_ID(id), data);
   }
 
-  // 6. Xóa
-  deleteProduct(id: string | number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+  delete(id: string | number): Observable<any> {
+    return this.apiService.delete(ENDPOINTS.PRODUCTS.BY_ID(id));
   }
 }

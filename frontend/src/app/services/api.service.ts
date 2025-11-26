@@ -27,6 +27,11 @@ export const ENDPOINTS = {
     BASE: "trace",
     TRACE_BATCH_NUMBER: (batch_number: Batch["batch_number"]) => `trace/${batch_number}`,
     TRACE_BATCH_NUMBER_DETAILED: (batch_number: Batch["batch_number"]) => `trace/${batch_number}/details`
+  },
+  PRODUCTS: {
+    BASE: "products",
+    SEARCH: "products/search",
+    BY_ID: (id: string | number) => `products/${id}`
   }
 }
 

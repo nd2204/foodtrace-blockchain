@@ -40,7 +40,7 @@ export class BatchFormComponent implements OnInit {
 
   ngOnInit() {
     // 1. Load danh sách Sản phẩm
-    this.productService.getAllProducts().subscribe({
+    this.productService.getAll().subscribe({
       next: (res: any) => {
         this.products = res.data || [];
       },
